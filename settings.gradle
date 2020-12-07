@@ -1,0 +1,4 @@
+include ':admin'
+include ':ustadz'
+include ':user'
+rootProject.name = "Kajian.ID"
