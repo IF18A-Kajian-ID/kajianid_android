@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Kajian.ID</string>
+    <string name="example_kajian_title">Untukmu yang sedang dalam Jalan Hijrah</string>
+    <string name="example_ustadz">Ust. Fendi Riawan, LLC., MA.</string>
+    <string name="example_mosque">Masjid Fatimatuzzahra</string>
+    <string name="example_keterangan">Di Tempat</string>
+    <string name="example_tanggal">01/02/2021  19.00</string>
+    <string name="load_data">Loading Data</string>
+    <string name="warning">Warning</string>
+    <string name="example_error_message">Oops! Error\n\n[404] Not Found</string>
+    <string name="refresh">Segarkan</string>
+    <string name="by">oleh</string>
+    <string name="play_video">Play Video</string>
+    <string name="on_stage">Di Tempat</string>
+    <string name="timestamp_announce">Waktu Pengumuman</string>
+    <string name="timestamp_due">Waktu Pelaksanaan</string>
+    <string name="description">Deskripsi:</string>
+    <string name="example_text">Lorem ipsum dolor sit amet, consectetur adispicing elit. Hapunten salajengna</string>
 </resources>
