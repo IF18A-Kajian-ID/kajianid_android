@@ -11,7 +11,7 @@ public class DeveloperData {
             R.drawable.maratun,
             R.drawable.fendi,
             R.drawable.intro1, // Diyah Primasari
-            R.drawable.intro3 // Muhammad Rizky Bayu Pratama
+            R.drawable.bayu // Muhammad Rizky Bayu Pratama
     };
 
     public static final String[] name = {

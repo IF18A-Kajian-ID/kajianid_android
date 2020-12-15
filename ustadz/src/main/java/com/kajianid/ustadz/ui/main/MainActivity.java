@@ -1,8 +1,10 @@
-package com.kajianid.ustadz;
+package com.kajianid.ustadz.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.kajianid.ustadz.R;
 
 public class MainActivity extends AppCompatActivity {
 

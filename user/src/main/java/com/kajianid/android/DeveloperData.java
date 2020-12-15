@@ -9,7 +9,7 @@ public class DeveloperData {
             R.drawable.maratun,
             R.drawable.fendi,
             R.drawable.intro1, // Diyah Primasari
-            R.drawable.intro3 // Muhammad Rizky Bayu Pratama
+            R.drawable.bayu
     };
 
     public static final String[] name = {
@@ -67,5 +67,5 @@ public class DeveloperData {
             "",
             ""
     };
-    
+
 }
