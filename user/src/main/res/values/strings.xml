@@ -16,4 +16,17 @@
     <string name="timestamp_due">Waktu Pelaksanaan</string>
     <string name="description">Deskripsi:</string>
     <string name="example_text">Lorem ipsum dolor sit amet, consectetur adispicing elit. Hapunten salajengna</string>
+    <string name="app_name">ArticleActivity</string>
+    <string name="example_article_title">Hukum memberikan zakat kepada kaum dhuafa secara online</string>
+    <string name="load_data">Mohon menunggu, kami sedang memuat data…</string>
+    <string name="warning">warning</string>
+    <string name="example_error_message">Oops! Error\n\n[404] Not Found</string>
+    <string name="refresh">Segarkan</string>
+    <string name="likes">suka</string>
+    <string name="example_likes">1200 suka</string>
+    <string name="post_date">Post Date</string>
+    <string name="example_post_date">12 Jan 2020 04:10:15</string>
+    <string name="example_text">Lorem ipsum dolor sit amet, consectetur adispicing elit. Hapunten salajengna</string>
+    <string name="nama_ustadz">ustadz abdul somad</string>
+
 </resources>
