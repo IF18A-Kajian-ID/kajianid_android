@@ -16,4 +16,5 @@
     <string name="timestamp_due">Waktu Pelaksanaan</string>
     <string name="description">Deskripsi:</string>
     <string name="example_text">Lorem ipsum dolor sit amet, consectetur adispicing elit. Hapunten salajengna</string>
+    <string name="show_kajian">Kajian</string>
 </resources>
