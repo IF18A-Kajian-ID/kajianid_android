@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KajianID">
-        <activity android:name=".ShowKajianActivity"></activity>
+        <activity android:name=".ReadArticleActivity"></activity>
+        <activity android:name=".ListArticleActivity" />
+        <activity android:name=".ContentReadArticle" />
+        <activity android:name=".ArticleIslami" />
+        <activity android:name=".ShowKajianActivity" />
         <activity android:name=".KajianActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
