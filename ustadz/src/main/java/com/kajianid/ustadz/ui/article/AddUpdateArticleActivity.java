@@ -101,12 +101,12 @@ public class AddUpdateArticleActivity extends AppCompatActivity {
             String articleTitle = binding.edtArticleTitle.getText().toString();
             String articleContent = binding.edtArticleContent.getText().toString();
 
-            if (isNullOrEmpty(articleTitle)) {
+            if (StringHelper.isNullOrEmpty(articleTitle)) {
                 Toast.makeText(this, getString(R.string.title_must_fill), Toast.LENGTH_SHORT).show();
                 binding.progressMessage.setVisibility(View.GONE);
                 binding.errorMessage.setVisibility(View.GONE);
                 isProgress = false;
-            } else if (isNullOrEmpty(articleContent)) {
+            } else if (StringHelper.isNullOrEmpty(articleContent)) {
                 Toast.makeText(this, getString(R.string.content_must_fill), Toast.LENGTH_SHORT).show();
                 binding.progressMessage.setVisibility(View.GONE);
                 binding.errorMessage.setVisibility(View.GONE);
@@ -153,12 +153,12 @@ public class AddUpdateArticleActivity extends AppCompatActivity {
             String articleTitle = binding.edtArticleTitle.getText().toString();
             String articleContent = binding.edtArticleContent.getText().toString();
 
-            if (isNullOrEmpty(articleTitle)) {
+            if (StringHelper.isNullOrEmpty(articleTitle)) {
                 Toast.makeText(this, getString(R.string.title_must_fill), Toast.LENGTH_SHORT).show();
                 binding.progressMessage.setVisibility(View.GONE);
                 binding.errorMessage.setVisibility(View.GONE);
                 isProgress = false;
-            } else if (isNullOrEmpty(articleContent)) {
+            } else if (StringHelper.isNullOrEmpty(articleContent)) {
                 Toast.makeText(this, getString(R.string.content_must_fill), Toast.LENGTH_SHORT).show();
                 binding.progressMessage.setVisibility(View.GONE);
                 binding.errorMessage.setVisibility(View.GONE);
