@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class ShowKajianActivity extends AppCompatActivity {
 
+    public static final String EXTRA_KAJIAN_ID = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kajianid.android.Adapter.ListKajianAdapter
@@ -46,7 +47,7 @@ class KajianActivity : AppCompatActivity() {
 
         kajianViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
                 .get(KajianViewModel::class.java)
-        kajianViewModel.kajian.observe(this, {
+        kajianViewModel.kajian.observe(this, Observer {
             if (it != null) {
                 binding.progressBar.visibility = View.GONE
                 listKajianAdapter.setKajian(it)
