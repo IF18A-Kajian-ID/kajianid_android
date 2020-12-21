@@ -12,7 +12,7 @@
         <activity android:name=".ReadArticleActivity"></activity>
         <activity android:name=".ListArticleActivity" />
         <activity android:name=".ContentReadArticle" />
-        <activity android:name=".ArticleIslamiActivity" />
+        <activity android:name=".ArticleActivity" />
         <activity android:name=".ShowKajianActivity" />
         <activity android:name=".KajianActivity" />
         <activity android:name=".MainActivity">
