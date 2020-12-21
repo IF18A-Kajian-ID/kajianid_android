@@ -15,6 +15,10 @@ public class Mosque implements Parcelable {
         address = in.readString();
     }
 
+    public Mosque() {
+        
+    }
+
     public static final Creator<Mosque> CREATOR = new Creator<Mosque>() {
         @Override
         public Mosque createFromParcel(Parcel in) {

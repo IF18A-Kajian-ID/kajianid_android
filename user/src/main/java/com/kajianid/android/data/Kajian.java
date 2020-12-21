@@ -18,6 +18,10 @@ public class Kajian implements Parcelable {
         imgResource = in.readString();
     }
 
+    public Kajian() {
+
+    }
+
     public static final Creator<Kajian> CREATOR = new Creator<Kajian>() {
         @Override
         public Kajian createFromParcel(Parcel in) {
