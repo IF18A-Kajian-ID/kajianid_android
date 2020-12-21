@@ -1,27 +1,115 @@
 <resources>
     <string name="app_name">Kajian.ID</string>
-    <string name="example_kajian_title">Untukmu yang sedang dalam Jalan Hijrah</string>
-    <string name="example_ustadz">Ust. Fendi Riawan, LLC., MA.</string>
-    <string name="example_mosque">Masjid Fatimatuzzahra</string>
-    <string name="example_keterangan">Di Tempat</string>
-    <string name="example_tanggal">01/02/2021  19.00</string>
-    <string name="load_data">Loading Data</string>
-    <string name="warning">Warning</string>
+    <string name="app_version">1.0 (2020)</string>
+    <string name="title_activity_main">Beranda</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">John Smith</string>
+    <string name="nav_header_subtitle">john.smith@example.com</string>
+    <string name="nav_header_desc">NAVIGASI</string>
+    <string name="action_settings">Pengaturan</string>
+
+    <string name="menu_home">Beranda</string>
+    <string name="menu_settings">Pengaturan</string>
+    <string name="menu_downloaded_articles">Artikel Terunduh</string>
+    <string name="menu_saved_kajian">Kajian Tersimpan</string>
+    <string name="title_activity_settings">Pengaturan</string>
+
+    <!-- Preference Titles -->
+    <string name="display_header">Tampilan</string>
+    <string name="sahur_header">Alarm Sahur</string>
+
+    <!-- Messages Preferences -->
+    <string name="theme_title">Tema</string>
+
+    <!-- Sync Preferences -->
+    <string name="duration_imsak">Durasi sebelum imsak (menit)</string>
+    <string name="duration_subtitle">Jeda waktu untuk alarm sebelum sahur</string>
+    <string name="alarm_message">Catatan: Suara alarm akan mengikuti suara bawaan dari smarphone Anda.</string>
+    <string name="location_title">Lokasi</string>
+    <string name="title_activity_maps_result">Titik Koordinat</string>
+    <string name="title_activity_maps">Titik Koordinat</string>
+    <string name="defaultLocation_title">Atur Lokasi Utama</string>
+    <string name="sahurStatus_title">Aktifkan Alarm Sahur</string>
+    <string name="loc_succes_change">"Lokasi Utama berhasil diubah ke "</string>
+    <string name="warning_zakat">PERHATIAN !\n \n Zakat yang dikeluarkan per anggota keluarga adalah yang \n memenuhi syarat sebagai berikut : \n 1. Beragama Islam\n 2. Keadaan Merdeka (Tidak Menjadi Budak)\n 3. Baligh dan Berakal\n \n Zakat Fitrah ini wajib dibayarkan seorang Muslim Setahun Sekali pada Awal atau Akhir Bulan Ramadhan.</string>
+
+    <string name="app_intro_skip_button">Lewati</string>
+    <string name="app_intro_next_button">Lanjut</string>
+    <string name="app_intro_back_button">Kembali</string>
+    <string name="app_intro_done_button">Selesai</string>
+    <string name="your_location">Lokasimu:</string>
+    <string name="example_title">Untukmu yang Sedang Mencari Ketenangan Jiwa</string>
+    <string name="join_with_shoumhome">Ayo bergabung bersama Shoum Home!</string>
+    <string name="example_ustads">Ustadz K H Abdul Somad</string>
+    <string name="example_keterangan">LIVE</string>
+    <string name="example_tanggal">1/02/2020 18.00</string>
+
+    <string name="load_data">Mohon menunggu, kami sedang memuat data…</string>
+    <string name="warning">warning</string>
     <string name="example_error_message">Oops! Error\n\n[404] Not Found</string>
     <string name="refresh">Segarkan</string>
-    <string name="by">oleh</string>
-    <string name="play_video">Play Video</string>
-    <string name="on_stage">Di Tempat</string>
-    <string name="timestamp_announce">Waktu Pengumuman</string>
-    <string name="timestamp_due">Waktu Pelaksanaan</string>
-    <string name="description">Deskripsi:</string>
-    <string name="example_text">Lorem ipsum dolor sit amet, consectetur adispicing elit. Hapunten salajengna</string>
-    <string name="show_kajian">Kajian</string>
     <string name="example_article_title">Hukum memberikan zakat kepada kaum dhuafa secara online</string>
-    <string name="load_data">Mohon menunggu, kami sedang memuat data…</string>
     <string name="likes">suka</string>
     <string name="example_likes">1200 suka</string>
     <string name="post_date">Post Date</string>
     <string name="example_post_date">12 Jan 2020 04:10:15</string>
+    <string name="example_text">Lorem ipsum dolor sit amet, consectetur adispicing elit. Hapunten salajengna</string>
+
+    <string name="play_video">Play Video</string>
+    <string name="example_kajian_title">Untukmu yang sedang dalam pelukan</string>
+    <string name="example_ustadz">Ust. Fendi Riawan, LLC., MA.</string>
+    <string name="example_mosque">Masjid Fatimatuzzahra</string>
+    <string name="on_stage">Di Tempat</string>
+    <string name="timestamp_announce">Waktu Pengumuman</string>
+    <string name="timestamp_due">Waktu Pelaksanaan</string>
+    <string name="description">Deskripsi:</string>
+    <string name="by">oleh</string>
+    <string name="post_picture">Post Picture</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="read_article">Artikel Islami</string>
+    <string name="server">https://dwichan.intermediaamikom.org/</string>
+    <string name="show_kajian">Kajian</string>
+
+    <string name="leader">KETUA</string>
+    <string name="member_one">ANGGOTA 1</string>
+    <string name="member_two">ANGGOTA 2</string>
+    <string name="about">Tentang</string>
+    <string name="copyright">© 2020. Kajian.ID Team.</string>
+
+    <string name="example_about_name">John Smith</string>
+    <string name="example_about_nim">12.11.1234</string>
+    <string name="label_about_grade">Kelas</string>
+    <string name="example_about_grade">AB 1234 C</string>
+    <string name="label_about_year_registered">Tahun Angkatan</string>
+    <string name="example_about_year_registered">2013</string>
+    <string name="label_about_github">GitHub Username</string>
+    <string name="example_about_github">admin123</string>
+    <string name="label_about_email">Email</string>
+    <string name="example_about_email">john.smith@example.com</string>
+    <string name="label_about_address">Alamat</string>
+    <string name="example_about_address">1234 William Street, CA, United States 12204</string>
+    <string name="visit_my_github">Kunjungi Profil GitHub Saya</string>
+    <string name="github">GitHub</string>
+    <string name="mosque_location">Lokasi Masjid</string>
+    <string name="mosque_list">Daftar Masjid</string>
     <string name="nama_ustadz">ustadz abdul somad</string>
+    <string name="sure">Yakin?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="remove_reminder_confirm">Yakin ingin mematikan pengingat dari kajian ini?</string>
+    <string name="remove_article_confirm">Yakin ingin menghapus artikel ini?</string>
+    <string name="search">Cari</string>
+    <string name="search_article">Cari artikel berdasarkan judul/ustadz…</string>
+    <string name="search_kajian">Cari kajian…</string>
+    <string name="food">Makan</string>
+    <string name="article">Artikel</string>
+    <string name="kajian">Kajian</string>
+    <string name="calc">Kalkulator</string>
+    <string name="google_maps">Google Maps</string>
+    <string name="choose_action_mosque">Pilih aksi yang akan dilakukan dengan masjid ini.</string>
+    <string name="view_on_maps">Lihat di Google Maps</string>
+    <string name="cancel">Batalkan</string>
+    <string name="example_address">Jalan Jatisari 13</string>
+    <string name="search_mosque">Cari masjid…</string>
 </resources>
