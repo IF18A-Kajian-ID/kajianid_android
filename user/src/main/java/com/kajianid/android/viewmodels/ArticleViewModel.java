@@ -1,4 +1,4 @@
-package com.kajianid.android;
+package com.kajianid.android.viewmodels;
 
 import android.content.Context;
 import android.os.Looper;
@@ -9,6 +9,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.kajianid.android.Adapter.ListArticleAdapter;
+import com.kajianid.android.R;
 import com.kajianid.android.data.Article;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -27,7 +29,7 @@ import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
 
-class ArticleViewModel extends ViewModel {
+public class ArticleViewModel extends ViewModel {
 
     private MutableLiveData<ArrayList<Article>> listArticle = new MutableLiveData<>();
 
@@ -65,7 +67,7 @@ class ArticleViewModel extends ViewModel {
                         article.setId(articleJSONObject.getString("id"));
                         article.setTitle(articleJSONObject.getString("tittle"));
                         article.setContent(articleJSONObject.getString("content"));
-                        article.setUstadzName(articleJSONObject.getString("ustadz name"));
+                        article.setUstadzName(articleJSONObject.getString("ustadz_name"));
                         article.setHasImg(articleJSONObject.getString("has_img"));
 
                         if (article.getHasImg().equals("1")) {
@@ -98,7 +100,7 @@ class ArticleViewModel extends ViewModel {
         return ret[0];
     }
 
-    public boolean setArticleAsync(Context context, ListArtikelAdapter adapter, String searchQuery) {
+    public boolean setArticleAsync(Context context, ListArticleAdapter adapter, String searchQuery) {
         final boolean[] ret = {false};
         String url = context.getResources().getString(R.string.server) + "api/articles";
         ArrayList<Article> listItems = new ArrayList<>();
@@ -127,7 +129,7 @@ class ArticleViewModel extends ViewModel {
                         article.setId(articleJSONObject.getString("id"));
                         article.setTitle(articleJSONObject.getString("tittle"));
                         article.setContent(articleJSONObject.getString("content"));
-                        article.setUstadzName(articleJSONObject.getString("ustadz name"));
+                        article.setUstadzName(articleJSONObject.getString("ustadz_name"));
                         article.setHasImg(articleJSONObject.getString("has_img"));
 
                         if (article.getHasImg().equals("1")) {
