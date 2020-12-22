@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AboutActivity">
 
     <LinearLayout
@@ -31,6 +32,33 @@
             android:layout_height="wrap_content"
             android:text="Tugas: Membuat Aplikasi untuk Sisi Ustadz dan memimpin tim projek" />
         
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/bayu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama: Muhammad Rizky Bayu Pratama" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NIM: 18.11.0258" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tugas: Membuat Java untuk Sisi user pada bagian Article" />
+
     </LinearLayout>
 
 </LinearLayout>

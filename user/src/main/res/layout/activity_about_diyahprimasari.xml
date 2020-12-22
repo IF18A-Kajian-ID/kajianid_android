@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/diyah"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:text="Nama: Diyah Primasari" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:text="NIM: 18.11.0289" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:text="Tugas: membuat dan mengisi ShowKajianActivity, ShowKajianSQLActivity, KajianSQLAdapter, SavedKajian, kokasi masjid kajian, lokasi masjid terdekat" />
+
+</LinearLayout>
