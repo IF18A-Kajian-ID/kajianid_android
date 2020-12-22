@@ -15,9 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KajianID">
+        <activity android:name=".ActivityAboutMaratunSolehah"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".ReadArticleActivity" />
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity android:name=".ListArticleActivity" />
         <activity android:name=".ArticleIslamiActivity" />
         <activity android:name=".ShowKajianActivity" />
