@@ -16,7 +16,7 @@ public class Mosque implements Parcelable {
     }
 
     public Mosque() {
-        
+
     }
 
     public static final Creator<Mosque> CREATOR = new Creator<Mosque>() {
