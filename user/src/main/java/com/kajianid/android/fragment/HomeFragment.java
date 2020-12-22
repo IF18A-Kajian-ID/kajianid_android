@@ -11,9 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kajianid.android.ArticleIslamiActivity;
 import com.kajianid.android.DataSessionHandler;
 import com.kajianid.android.KajianActivity;
-import com.kajianid.android.R;
+import com.kajianid.android.KajianJavaActivity;
 import com.kajianid.android.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
                 (session.getNama_lengkap().equals(null)) ? "" : session.getNama_lengkap()
         );
         binding.btnArticle.setOnClickListener(it -> {
-                    Intent i = new Intent(getContext(), KajianActivity.class);
+                    Intent i = new Intent(getContext(), ArticleIslamiActivity.class);
                     startActivity(i);
                 });
         binding.btnKajian.setOnClickListener(it ->{

@@ -21,7 +21,7 @@ import org.json.JSONObject
 class ArticleIslamiActivity : AppCompatActivity() {
     var id = ""
     private lateinit var articleViewModel: ArticleViewModel
-    private var listArticleAdapter: ListArticleAdapter = ListArticleAdapter(this)
+    private var listArticleAdapter: ListArticleAdapter = ListArticleAdapter()
     private var searchView: SearchView? = null
     private lateinit var binding: ActivityArticleIslamiBinding
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

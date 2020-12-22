@@ -8,7 +8,7 @@ public class DeveloperData {
             R.drawable.dwichan,
             R.drawable.maratun,
             R.drawable.fendi,
-            R.drawable.intro1, // Diyah Primasari
+            R.drawable.diyah, // Diyah Primasari
             R.drawable.bayu
     };
 
@@ -16,7 +16,7 @@ public class DeveloperData {
             "Dwi Candra Permana",
             "",
             "",
-            "",
+            "Diyah Primasari",
             ""
     };
 
@@ -24,7 +24,7 @@ public class DeveloperData {
             "18.11.0004",
             "",
             "",
-            "",
+            "18.11.0289",
             ""
     };
 
@@ -32,7 +32,7 @@ public class DeveloperData {
             "IF 2018 A",
             "",
             "",
-            "",
+            "IF 2018 A",
             ""
     };
 
@@ -40,7 +40,7 @@ public class DeveloperData {
             "2018",
             "",
             "",
-            "",
+            "2018",
             ""
     };
 
@@ -48,7 +48,7 @@ public class DeveloperData {
             "dwichan0905",
             "",
             "",
-            "",
+            "DiyahPrimasari0289",
             ""
     };
 
@@ -56,7 +56,7 @@ public class DeveloperData {
             "dwichan@outlook.com",
             "",
             "",
-            "",
+            "diyahprimasari24@gmail.com",
             ""
     };
 
@@ -64,7 +64,7 @@ public class DeveloperData {
             "Jalan Mandor Martinem Roy 1 Nomor 99 RT 005 RW 006 Desa Rejasari Kecamatan Langensari Kota Banjar",
             "",
             "",
-            "",
+            "Kasih, RT 004 RW 003, Kecamatan Kertanegara, Kabupaten Purbalingga",
             ""
     };
 
