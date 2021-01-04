@@ -20,9 +20,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -56,7 +58,6 @@ public class KajianViewModel extends ViewModel {
         params.put("q", searchQuery);
 
         client.get(url, params, new AsyncHttpResponseHandler() {
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {
@@ -76,8 +77,8 @@ public class KajianViewModel extends ViewModel {
                         kajian.setMosqueName(jsonObject.getString("mosque_name"));
 
                         String date = jsonObject.getString("date_due");
-                        Date dateDue = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(date);
-                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue);
+                        DateFormat dateDue = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue.parse(date));
 
                         kajian.setDate(dateDueFormatted);
                         kajian.setImgResource(jsonObject.getString("img_resource"));
@@ -85,10 +86,11 @@ public class KajianViewModel extends ViewModel {
                         listItems.add(kajian);
                     }
 
-                    listKajian.setValue(listItems);
+                    listKajian.postValue(listItems);
                     ret[0] = null;
                 } catch (JSONException | ParseException e) {
                     e.printStackTrace();
+                    Toast.makeText(context, "Failure!\n" + e.getMessage() + "\n{onSuccess(), client.get()}", Toast.LENGTH_LONG).show();
                     ret[0] = e.getMessage();
                 }
             }
@@ -96,6 +98,7 @@ public class KajianViewModel extends ViewModel {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 error.printStackTrace();
+                Toast.makeText(context, "Failure!\n" + error.getMessage() + "\n{onFailure(), client.get()}", Toast.LENGTH_LONG).show();
                 String response = new String(responseBody);
                 ret[0] = response;
             }
@@ -120,7 +123,6 @@ public class KajianViewModel extends ViewModel {
         params.put("q", searchQuery);
 
         client.get(url, params, new AsyncHttpResponseHandler() {
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {
@@ -140,8 +142,8 @@ public class KajianViewModel extends ViewModel {
                         kajian.setMosqueName(jsonObject.getString("mosque_name"));
 
                         String date = jsonObject.getString("date_due");
-                        Date dateDue = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(date);
-                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue);
+                        DateFormat dateDue = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue.parse(date));
 
                         kajian.setDate(dateDueFormatted);
                         kajian.setImgResource(jsonObject.getString("img_resource"));
@@ -150,12 +152,12 @@ public class KajianViewModel extends ViewModel {
                         adapter.notifyDataSetChanged();
                     }
 
-                    listKajian.setValue(listItems);
+                    listKajian.postValue(listItems);
 
                     ret[0] = true;
                 } catch (JSONException | ParseException e) {
                     e.printStackTrace();
-                    Toast.makeText(context, "Failure!\n" + e.getMessage() + "\n{onSuccess(), client.get()}", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Failure!\n" + e.getMessage() + "\n{onSuccess(), client.get()}", Toast.LENGTH_LONG).show();
                     ret[0] = false;
                 }
             }
@@ -163,8 +165,8 @@ public class KajianViewModel extends ViewModel {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 error.printStackTrace();
-                String response = new String(responseBody);
-                Toast.makeText(context, "Failure!\n" + error.getMessage() + "\n" + response, Toast.LENGTH_SHORT).show();
+                //String response = Arrays.toString(responseBody);
+                Toast.makeText(context, "Failure!\n" + error.getMessage() + "\n", Toast.LENGTH_LONG).show();
                 ret[0] = false;
             }
 

@@ -2,8 +2,10 @@ package com.kajianid.ustadz.ui.settings;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -33,10 +35,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private ActivitySettingsBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivitySettingsBinding binding = ActivitySettingsBinding.inflate(getLayoutInflater());
+        binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Objects.requireNonNull(getSupportFragmentManager())
                 .beginTransaction()
@@ -45,6 +49,12 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.settings));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) super.onBackPressed();
+        return true;
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
@@ -141,5 +151,11 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
             });
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
     }
 }

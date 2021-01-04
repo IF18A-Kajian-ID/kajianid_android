@@ -18,10 +18,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class EditPasswordActivity extends AppCompatActivity {
 
+    private ActivityEditPasswordBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityEditPasswordBinding binding = ActivityEditPasswordBinding.inflate(getLayoutInflater());
+        binding = ActivityEditPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setFinishOnTouchOutside(false);
 
@@ -83,5 +85,11 @@ public class EditPasswordActivity extends AppCompatActivity {
                 binding.edtOldPassword.setError(getString(R.string.wrong_old_pass));
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
     }
 }

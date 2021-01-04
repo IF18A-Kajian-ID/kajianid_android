@@ -21,10 +21,12 @@ public class EditIdentityActivity extends AppCompatActivity {
 
     public static final String EXTRA_PARCEL_USTADZ = "extra_parcel_ustadz";
 
+    private ActivityEditIdentityBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityEditIdentityBinding binding = ActivityEditIdentityBinding.inflate(getLayoutInflater());
+        binding = ActivityEditIdentityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setFinishOnTouchOutside(false);
 
@@ -98,5 +100,11 @@ public class EditIdentityActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
     }
 }

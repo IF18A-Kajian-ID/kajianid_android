@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel;
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.data.Article;
 import com.kajianid.ustadz.prefs.CredentialPreference;
+import com.kajianid.ustadz.utils.StringHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -20,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,14 +61,14 @@ public class ArticleViewModel extends ViewModel {
                     JSONObject resultObject = new JSONObject(result);
                     JSONArray list = resultObject.getJSONArray("data");
 
-                    for (int i = 0; i <= list.length(); i++) {
+                    for (int i = 0; i < list.length(); i++) {
                         JSONObject jsonObject = list.getJSONObject(i);
                         Article article = new Article();
 
                         article.setId(jsonObject.getString("id"));
                         article.setTitle(jsonObject.getString("title"));
                         article.setContent(jsonObject.getString("content"));
-                        article.setHasImg(jsonObject.getBoolean("has_img"));
+                        article.setHasImg(StringHelper.convertToBoolean(jsonObject.getString("has_img")));
 
                         if (article.isHasImg()) {
                             String extension = jsonObject.getString("extension");
@@ -75,9 +77,9 @@ public class ArticleViewModel extends ViewModel {
                         }
 
                         String date = jsonObject.getString("post_date");
-                        Date dateDue = new SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault()).parse(date);
+                        DateFormat dateDue = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                         assert dateDue != null;
-                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue);
+                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue.parse(date));
 
                         article.setPost_date(dateDueFormatted);
 
@@ -86,13 +88,22 @@ public class ArticleViewModel extends ViewModel {
                     listArticle.postValue(listItems);
                     ret[0] = null;
                 } catch (JSONException | ParseException e) {
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 error.printStackTrace();
+                Toast.makeText(
+                        context,
+                        "Failure!\n" +
+                                error.getMessage() +
+                                "\n" +
+                                Arrays.toString(responseBody),
+                        Toast.LENGTH_LONG
+                ).show();
                 ret[0] = Arrays.toString(responseBody);
             }
         });
@@ -121,14 +132,14 @@ public class ArticleViewModel extends ViewModel {
                     JSONObject resultObject = new JSONObject(result);
                     JSONArray list = resultObject.getJSONArray("data");
 
-                    for (int i = 0; i <= list.length(); i++) {
+                    for (int i = 0; i < list.length(); i++) {
                         JSONObject jsonObject = list.getJSONObject(i);
                         Article article = new Article();
 
                         article.setId(jsonObject.getString("id"));
                         article.setTitle(jsonObject.getString("title"));
                         article.setContent(jsonObject.getString("content"));
-                        article.setHasImg(jsonObject.getBoolean("has_img"));
+                        article.setHasImg(StringHelper.convertToBoolean(jsonObject.getString("has_img")));
 
                         if (article.isHasImg()) {
                             String extension = jsonObject.getString("extension");
@@ -137,9 +148,9 @@ public class ArticleViewModel extends ViewModel {
                         }
 
                         String date = jsonObject.getString("post_date");
-                        Date dateDue = new SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault()).parse(date);
+                        DateFormat dateDue = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                         assert dateDue != null;
-                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue);
+                        String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue.parse(date));
 
                         article.setPost_date(dateDueFormatted);
 
@@ -149,7 +160,8 @@ public class ArticleViewModel extends ViewModel {
                     listArticle.postValue(listItems);
                     ret[0] = true;
                 } catch (JSONException | ParseException e) {
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
                 }
             }
 
@@ -161,7 +173,7 @@ public class ArticleViewModel extends ViewModel {
                                 error.getMessage() +
                                 "\n" +
                                 Arrays.toString(responseBody),
-                        Toast.LENGTH_SHORT
+                        Toast.LENGTH_LONG
                 ).show();
                 error.printStackTrace();
                 ret[0] = false;

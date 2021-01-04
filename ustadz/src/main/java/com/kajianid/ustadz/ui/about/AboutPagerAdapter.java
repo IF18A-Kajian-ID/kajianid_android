@@ -21,8 +21,7 @@ public class AboutPagerAdapter extends FragmentPagerAdapter {
             R.string.member_one,
             R.string.member_two,
             R.string.member_three,
-            R.string.member_four,
-            R.string.member_five
+            R.string.member_four
     };
 
     public AboutPagerAdapter(Context context, FragmentManager fm) {

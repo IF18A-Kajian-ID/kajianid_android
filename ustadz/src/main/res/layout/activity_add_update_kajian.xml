@@ -115,8 +115,9 @@
                     android:layout_marginStart="8dp"
                     android:ellipsize="end"
                     android:maxLines="1"
+                    android:textColor="@android:color/white"
                     android:text="@string/example_path"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </RelativeLayout>
 

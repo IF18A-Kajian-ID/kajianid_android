@@ -26,14 +26,14 @@ import org.json.JSONObject
 
 class MosqueListFragment : Fragment() {
 
-    private var mosqueListAdapter: MosqueChooserAdapter = MosqueChooserAdapter()
+    private var mosqueListAdapter: MosqueListAdapter = MosqueListAdapter()
     private lateinit var mosqueListViewModel: MosqueChooserViewModel
     private lateinit var binding: FragmentMosqueListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mosqueListAdapter = MosqueChooserAdapter()
+        mosqueListAdapter = MosqueListAdapter()
         mosqueListAdapter.notifyDataSetChanged()
     }
 

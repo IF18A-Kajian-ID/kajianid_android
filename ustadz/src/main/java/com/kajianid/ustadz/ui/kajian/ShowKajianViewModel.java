@@ -20,9 +20,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -77,13 +79,13 @@ public class ShowKajianViewModel extends ViewModel {
                     String dateAnnounce = kajianJSONObject.getString("date_announce");
                     String dateDue = kajianJSONObject.getString("date_due");
 
-                    Date dateAnnounceD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(dateAnnounce);
+                    DateFormat dateAnnounceD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                     assert dateAnnounceD != null;
-                    String dateAnnounceFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateAnnounceD);
+                    String dateAnnounceFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateAnnounceD.parse(dateAnnounce));
 
-                    Date dateDueD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(dateDue);
+                    DateFormat dateDueD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                     assert dateDueD != null;
-                    String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDueD);
+                    String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDueD.parse(dateDue));
 
                     resultMap.put("status", true);
                     resultMap.put("id", id);
@@ -155,13 +157,13 @@ public class ShowKajianViewModel extends ViewModel {
                     String dateAnnounce = kajianJSONObject.getString("date_announce");
                     String dateDue = kajianJSONObject.getString("date_due");
 
-                    Date dateAnnounceD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(dateAnnounce);
+                    DateFormat dateAnnounceD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                     assert dateAnnounceD != null;
-                    String dateAnnounceFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateAnnounceD);
+                    String dateAnnounceFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateAnnounceD.parse(dateAnnounce));
 
-                    Date dateDueD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(dateDue);
+                    DateFormat dateDueD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                     assert dateDueD != null;
-                    String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDueD);
+                    String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDueD.parse(dateDue));
 
                     resultMap.put("status", true);
                     resultMap.put("id", id);

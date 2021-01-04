@@ -11,4 +11,8 @@ public class StringHelper {
         if (email.equals(null)) return false;
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
+    public static boolean convertToBoolean(String what) {
+        return what.equals("1") || what.equalsIgnoreCase("TRUE");
+    }
 }

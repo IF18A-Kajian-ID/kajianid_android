@@ -1,6 +1,7 @@
 package com.kajianid.ustadz.ui.intro
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -90,7 +91,7 @@ class IntroActivity : AppIntro2() {
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
         // Decide what to do when the user clicks on "Done"
-        val sp: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val sp: SharedPreferences = getSharedPreferences("root_preferences", Context.MODE_PRIVATE)
         with(sp.edit()) {
             putBoolean("first", true)
             commit()
