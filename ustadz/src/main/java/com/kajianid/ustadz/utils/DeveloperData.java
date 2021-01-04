@@ -17,7 +17,7 @@ public class DeveloperData {
     public static final String[] name = {
             "Dwi Candra Permana",
             "",
-            "",
+            "Fendi Riawan",
             "",
             ""
     };
@@ -25,7 +25,7 @@ public class DeveloperData {
     public static final String[] nim = {
             "18.11.0004",
             "",
-            "",
+            "18.11.0268",
             "",
             ""
     };
@@ -33,7 +33,7 @@ public class DeveloperData {
     public static final String[] kelas = {
             "IF 2018 A",
             "",
-            "",
+            "IF 2018 A",
             "",
             ""
     };
@@ -41,7 +41,7 @@ public class DeveloperData {
     public static final String[] yearRegister = {
             "2018",
             "",
-            "",
+            "2018",
             "",
             ""
     };
@@ -49,7 +49,7 @@ public class DeveloperData {
     public static final String[] githubUsername = {
             "dwichan0905",
             "",
-            "",
+            "fendi-riawan",
             "",
             ""
     };
@@ -57,7 +57,7 @@ public class DeveloperData {
     public static final String[] email = {
             "dwichan@outlook.com",
             "",
-            "",
+            "fendiriawan0102@gmail.com",
             "",
             ""
     };
@@ -65,7 +65,7 @@ public class DeveloperData {
     public static final String[] address = {
             "Jalan Mandor Martinem Roy 1 Nomor 99 RT 005 RW 006 Desa Rejasari Kecamatan Langensari Kota Banjar",
             "",
-            "",
+            "Kemutug Lor RT 04 RW 03 Kecamatan Baturraden",
             "",
             ""
     };
