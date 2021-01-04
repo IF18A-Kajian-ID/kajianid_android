@@ -10,6 +10,10 @@ public class Ustadz implements Parcelable {
     private String email;
     private String gender;
 
+    public Ustadz() {
+
+    }
+
     protected Ustadz(Parcel in) {
         name = in.readString();
         phone = in.readString();

@@ -1,0 +1,40 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/appearance_header">
+
+        <ListPreference
+            app:defaultValue="light"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:icon="@drawable/ic_baseline_brightness_medium_24"
+            app:key="theme"
+            app:title="@string/theme_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/account_header">
+
+        <Preference
+            android:icon="@drawable/ic_baseline_person_24"
+            android:key="changeIdentity"
+            android:title="@string/change_identity" />
+
+        <Preference
+            android:icon="@drawable/ic_baseline_vpn_key_24"
+            android:key="changePassword"
+            android:title="@string/change_password" />
+
+        <Preference
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:key="logout"
+            android:title="@string/logout" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
