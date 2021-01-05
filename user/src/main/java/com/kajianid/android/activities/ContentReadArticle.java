@@ -1,4 +1,4 @@
-package com.kajianid.android;
+package com.kajianid.android.activities;
 
 import android.app.Activity;
 

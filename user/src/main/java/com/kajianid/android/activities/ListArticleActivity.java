@@ -1,16 +1,16 @@
-package com.kajianid.android;
+package com.kajianid.android.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ShowKajianActivity extends AppCompatActivity {
+import com.kajianid.android.R;
 
-    public static final String EXTRA_KAJIAN_ID = "";
+public class ListArticleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_kajian);
+        setContentView(R.layout.activity_list_article);
     }
 }
