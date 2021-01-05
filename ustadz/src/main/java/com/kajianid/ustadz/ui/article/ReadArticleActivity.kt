@@ -84,8 +84,8 @@ class ReadArticleActivity : AppCompatActivity() {
                     """.trimIndent()
                     binding.tvErrorMessage.text = errorMessage
                 }
-                readArticleViewModel.setArticleAsync(this, id)
             })
+            readArticleViewModel.setArticleAsync(this, id)
         }
 
         binding.pullToRefresh.setOnRefreshListener {

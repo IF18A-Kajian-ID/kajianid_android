@@ -36,7 +36,7 @@ public class KajianAdapter extends RecyclerView.Adapter<KajianAdapter.KajianView
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
     }
 
     public void setData(ArrayList<Kajian> kajian) {

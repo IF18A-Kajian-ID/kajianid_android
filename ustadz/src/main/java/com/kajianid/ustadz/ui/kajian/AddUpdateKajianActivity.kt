@@ -10,6 +10,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Parcelable
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -234,7 +235,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
 
     @Throws(FileNotFoundException::class)
     private fun postData() {
-        if (isEditMode) {
+        if (!isEditMode) {
             // save
             val selectedItem = binding!!.spKajianCategory.selectedItem.toString()
             val categories = resources.getStringArray(R.array.kajian_category_entries)
@@ -280,6 +281,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             }
             binding!!.progressMessage.visibility = View.VISIBLE
             binding!!.errorMessage.visibility = View.GONE
+
             val kajianCategory: String
             kajianCategory = if (selectedItem == categories[0]) "Di Tempat" else if (selectedItem == categories[1]) "Video" else if (selectedItem == categories[2]) "Live Streaming" else throw IllegalArgumentException("Invalid Kajian Category!")
             kajianTitle = binding!!.edtKajianTitle.text.toString()
@@ -289,9 +291,11 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             kajianDateDue = binding!!.edtKajianDateDue.text.toString()
             kajianTimeDue = binding!!.edtKajianTimeDue.text.toString()
             val kajianDateTimeDue = "$kajianDateDue $kajianTimeDue"
+
             val api = getString(R.string.server) + "api/kajian"
             val client = AsyncHttpClient()
             val credential = CredentialPreference(this)
+
             val params = RequestParams()
             params.put("title", kajianTitle)
             params.put("ustadz_id", credential.credential.username)
@@ -317,12 +321,14 @@ class AddUpdateKajianActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
+                    error.printStackTrace()
+                    Log.e("ERROR", String(responseBody))
                     binding!!.progressMessage.visibility = View.GONE
                     binding!!.errorMessage.visibility = View.VISIBLE
                     val errorMsg = """
                         Oops! An error occurred.
                         [$statusCode]
-                        ${Arrays.toString(responseBody)}
+                        ${String(responseBody)}
                         """.trimIndent()
                     binding!!.tvErrorMessage.text = errorMsg
                 }
@@ -409,6 +415,8 @@ class AddUpdateKajianActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
+                    error.printStackTrace()
+                    Log.e("ERROR", String(responseBody))
                     binding!!.progressMessage.visibility = View.GONE
                     binding!!.errorMessage.visibility = View.VISIBLE
                     val errorMsg = """
