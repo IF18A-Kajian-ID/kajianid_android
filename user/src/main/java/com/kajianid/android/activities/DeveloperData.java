@@ -1,6 +1,8 @@
-package com.kajianid.android;
+package com.kajianid.android.activities;
 
 import androidx.annotation.DrawableRes;
+
+import com.kajianid.android.R;
 
 public class DeveloperData {
     @DrawableRes

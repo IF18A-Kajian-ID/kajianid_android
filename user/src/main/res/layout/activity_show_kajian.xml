@@ -27,7 +27,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include layout="@layout/content_show_kajian" />
+            <include
+                android:id="@+id/content_show_kajian"
+                layout="@layout/content_show_kajian" />
 
         </ScrollView>
 

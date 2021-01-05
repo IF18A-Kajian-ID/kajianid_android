@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.kajianid.android.Adapter.ListKajianAdapter;
+import com.kajianid.android.adapter.ListKajianAdapter;
 import com.kajianid.android.R;
 import com.kajianid.android.data.Kajian;
 import com.loopj.android.http.AsyncHttpClient;
