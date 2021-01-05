@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.prefs.CredentialPreference;
+import com.kajianid.ustadz.utils.StringHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -64,7 +66,7 @@ public class ReadArticleViewModel extends ViewModel {
 
                     JSONObject articleJSONObject = list.getJSONObject(0);
                     String title = articleJSONObject.getString("title");
-                    boolean hasImg = articleJSONObject.getBoolean("has_img");
+                    boolean hasImg = StringHelper.convertToBoolean(articleJSONObject.getString("has_img"));
                     String extension = articleJSONObject.getString("extension");
                     String content = articleJSONObject.getString("content");
 
@@ -127,7 +129,7 @@ public class ReadArticleViewModel extends ViewModel {
 
                     JSONObject articleJSONObject = list.getJSONObject(0);
                     String title = articleJSONObject.getString("title");
-                    boolean hasImg = articleJSONObject.getBoolean("has_img");
+                    boolean hasImg = StringHelper.convertToBoolean(articleJSONObject.getString("has_img"));
                     String extension = articleJSONObject.getString("extension");
                     String content = articleJSONObject.getString("content");
 

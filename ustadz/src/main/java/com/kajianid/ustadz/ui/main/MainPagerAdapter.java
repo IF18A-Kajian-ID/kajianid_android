@@ -51,12 +51,11 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
                 fragment = new MosqueListFragment();
                 break;
         }
-        assert fragment != null;
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return tabTitles.length;
+        return 3;
     }
 }

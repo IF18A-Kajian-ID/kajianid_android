@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.data.Credential;
 import com.kajianid.ustadz.databinding.ActivityLoginBinding;
@@ -32,6 +33,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Glide.with(this)
+                .load(R.drawable.icon)
+                .into(binding.contentLogin.namaSlogan3);
 
         binding.contentLogin.showPass.setOnClickListener(itView -> {
             if (binding.contentLogin.showPass.isChecked())
@@ -84,15 +89,17 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    binding.progressBar.setVisibility(View.GONE);
+                    binding.btnLogin.setVisibility(View.VISIBLE);
                     switch (statusCode) {
-                        case 401:
+                        case 403:
                             Toast.makeText(
                                     LoginActivity.this,
                                     getString(R.string.wrong_username_password),
                                     Toast.LENGTH_SHORT
                             ).show();
                             break;
-                        case 403:
+                        case 401:
                             Toast.makeText(
                                     LoginActivity.this,
                                     getString(R.string.empty_username_password),
@@ -112,4 +119,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
+    }
 }

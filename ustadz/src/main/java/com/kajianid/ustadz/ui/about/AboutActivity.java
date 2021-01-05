@@ -3,6 +3,7 @@ package com.kajianid.ustadz.ui.about;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,10 +15,12 @@ import com.kajianid.ustadz.databinding.ActivityAboutBinding;
 
 public class AboutActivity extends AppCompatActivity {
 
+    private ActivityAboutBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityAboutBinding binding = ActivityAboutBinding.inflate(getLayoutInflater());
+        binding = ActivityAboutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         AboutPagerAdapter adapter = new AboutPagerAdapter(this, getSupportFragmentManager());
@@ -35,6 +38,7 @@ public class AboutActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -48,5 +52,11 @@ public class AboutActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
     }
 }

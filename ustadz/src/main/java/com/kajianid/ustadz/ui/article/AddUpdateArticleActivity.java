@@ -200,4 +200,10 @@ public class AddUpdateArticleActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (!isProgress) super.onBackPressed();
     }
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
+    }
 }

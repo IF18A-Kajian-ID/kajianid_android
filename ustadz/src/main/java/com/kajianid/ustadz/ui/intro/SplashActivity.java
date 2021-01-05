@@ -2,7 +2,9 @@ package com.kajianid.ustadz.ui.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,11 +12,13 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.databinding.ActivitySplashBinding;
 import com.kajianid.ustadz.prefs.CredentialPreference;
 import com.kajianid.ustadz.ui.login.LoginActivity;
 import com.kajianid.ustadz.ui.main.MainActivity;
+import com.kajianid.ustadz.utils.StringHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -27,9 +31,18 @@ import cz.msebera.android.httpclient.Header;
 public class SplashActivity extends AppCompatActivity {
 
     private ActivitySplashBinding binding;
-    private final SharedPreferences sharedPreferences = null;
 
-    private void setActTheme() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivitySplashBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        Glide.with(this)
+                .load(R.drawable.icon)
+                .into(binding.namaSlogan);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("root_preferences", Context.MODE_PRIVATE);
         switch (sharedPreferences.getString("theme", "light")) {
             case "dark":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -41,15 +54,6 @@ public class SplashActivity extends AppCompatActivity {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
                 break;
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setActTheme();
-        binding = ActivitySplashBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
         int loadTime = 2000;
 
         CredentialPreference credentialPreference = new CredentialPreference(this);
@@ -64,19 +68,15 @@ public class SplashActivity extends AppCompatActivity {
                         credentialPreference.getCredential().getPassword()
                 );
             } else {
-                Intent login = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(login);
+                Intent intro = new Intent(SplashActivity.this, IntroActivity.class);
+                startActivity(intro);
                 SplashActivity.this.finish();
             }
         }, loadTime);
     }
 
-    private boolean isNullOrEmpty(String string) {
-        return (string == null) || (string.trim().equals(""));
-    }
-
     private void fetchLoginData(String username, String password) {
-        if (!isNullOrEmpty(username) || !isNullOrEmpty(password)) {
+        if (!StringHelper.isNullOrEmpty(username) || !StringHelper.isNullOrEmpty(password)) {
             binding.progressBar.setVisibility(View.VISIBLE);
 
             String api = getString(R.string.server) + "api/ustadz/credential";
@@ -138,6 +138,16 @@ public class SplashActivity extends AppCompatActivity {
                     SplashActivity.this.finish();
                 }
             });
+        } else {
+            Intent login = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(login);
+            SplashActivity.this.finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
     }
 }

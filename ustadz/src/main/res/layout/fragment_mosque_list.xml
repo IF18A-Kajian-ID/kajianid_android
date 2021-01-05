@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.kajian.KajianFragment">
+    tools:context="ui.mosque.MosqueListFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/pullToRefresh"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_info"
+            android:id="@+id/rvMosque"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
@@ -38,13 +38,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/et_search_kajian"
+            android:id="@+id/et_search_mosque"
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:autofillHints=""
             android:background="@android:color/transparent"
-            android:hint="@string/search_kajian"
+            android:hint="@string/search_mosque"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
@@ -54,11 +54,11 @@
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab_add_kajian"
+        android:id="@+id/fab_add_mosque"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:text="@string/add_kajian"
+        android:text="@string/add_mosque"
         app:icon="@drawable/ic_baseline_add_24"
         app:layout_anchor="@id/pullToRefresh"
         app:layout_anchorGravity="bottom|end"
@@ -83,6 +83,7 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
+            android:id="@+id/tvProgressMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/progressBar"
