@@ -1,4 +1,4 @@
-package com.kajianid.android
+package com.kajianid.android.activities
 
 import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.kajianid.android.databinding.ActivityArticleIslamiBinding
+import com.kajianid.android.R
 import com.kajianid.android.databinding.ActivityReadArticleBinding
 import com.kajianid.android.viewmodels.ReadArticleViewModel
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +30,7 @@ class ReadArticleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReadArticleBinding
 
     companion object {
-        private const val EXTRA_ARTICLE_ID = ""
+        const val EXTRA_ARTICLE_ID = "extra_article_id"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

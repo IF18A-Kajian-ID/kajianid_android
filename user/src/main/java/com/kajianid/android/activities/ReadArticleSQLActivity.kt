@@ -1,4 +1,4 @@
-package com.kajianid.android
+package com.kajianid.android.activities
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.kajianid.android.R
 import com.kajianid.android.databinding.ActivityReadArticleBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
