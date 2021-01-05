@@ -43,7 +43,7 @@ public class DeveloperData {
             "2018",
             "2018",
             "2018",
-            "2018"
+            "2018",
     };
 
     public static final String[] githubUsername = {
@@ -67,7 +67,7 @@ public class DeveloperData {
             "Desa losari RT 04/RW 04 Kecamatan Rawalo Kabupaten Banyumas",
             "Kemutug Lor RT 04 rw 03 Kecamatan Baturraden",
             "Kasih, RT 004 RW 003, Kecamatan Kertanegara, Kabupaten Purbalingga",
-            "Desa Papringan Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah"
+            "Desa Papringan Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
     };
 
 }
