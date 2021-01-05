@@ -19,7 +19,7 @@ public class DeveloperData {
             "Mar Atun Solehah",
             "",
             "Diyah Primasari",
-            ""
+            "Muhammad Rizky Bayu Pratama",
     };
 
     public static final String[] nim = {
@@ -27,7 +27,7 @@ public class DeveloperData {
             "18.11.0017",
             "",
             "18.11.0289",
-            ""
+            "18.11.0258",
     };
 
     public static final String[] kelas = {
@@ -35,7 +35,7 @@ public class DeveloperData {
             "IF 2018 A",
             "",
             "IF 2018 A",
-            ""
+            "IF 2018 A",
     };
 
     public static final String[] yearRegister = {
@@ -43,7 +43,7 @@ public class DeveloperData {
             "2018",
             "",
             "2018",
-            ""
+            "2018"
     };
 
     public static final String[] githubUsername = {
@@ -51,7 +51,7 @@ public class DeveloperData {
             "maratun1725",
             "",
             "DiyahPrimasari0289",
-            ""
+            "rizkybayu1411",
     };
 
     public static final String[] email = {
@@ -59,7 +59,7 @@ public class DeveloperData {
             "marhatunsoleha17@gmail.com",
             "",
             "diyahprimasari24@gmail.com",
-            ""
+            "rizkybayu1411@gmail.com",
     };
 
     public static final String[] address = {
@@ -67,7 +67,7 @@ public class DeveloperData {
             "Desa losari RT 04/RW 04 Kecamatan Rawalo Kabupaten Banyumas",
             "",
             "Kasih, RT 004 RW 003, Kecamatan Kertanegara, Kabupaten Purbalingga",
-            ""
+            "Desa Papringan Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah"
     };
 
 }
