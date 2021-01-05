@@ -41,6 +41,7 @@ class ArticleIslamiActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle(resources.getString(R.string.read_article))
+
         binding.recDataArtikel.layoutManager = LinearLayoutManager(this)
         binding.recDataArtikel.adapter = listArticleAdapter
         articleViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
