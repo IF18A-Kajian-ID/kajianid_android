@@ -1,4 +1,4 @@
-package com.kajianid.android
+package com.kajianid.android.activities
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kajianid.android.Adapter.ListArticleAdapter
+import com.kajianid.android.R
+import com.kajianid.android.adapter.ListArticleAdapter
 import com.kajianid.android.databinding.ActivityArticleIslamiBinding
 import com.kajianid.android.viewmodels.ArticleViewModel
 import kotlinx.coroutines.Dispatchers

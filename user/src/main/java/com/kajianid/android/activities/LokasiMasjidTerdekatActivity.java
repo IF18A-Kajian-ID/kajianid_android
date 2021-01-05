@@ -1,11 +1,12 @@
-package com.kajianid.android;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.kajianid.android.activities;
 
 import android.os.Bundle;
 
-public class AboutActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.kajianid.android.R;
+
+public class LokasiMasjidTerdekatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
