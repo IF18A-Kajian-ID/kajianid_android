@@ -1,12 +1,11 @@
-package com.kajianid.android.databases
+package com.kajianid.android.databases.kajian
 
 import android.provider.BaseColumns
 
 object DatabaseContract {
-    class KajianColumns : BaseColumns{
+    class KajianColumns : BaseColumns {
         companion object {
             const val TABLE_NAME_KAJIAN = "kajian"
-            const val TABLE_NAME_ARTICLES = "articles"
             val ID = "id"
             val KAJIAN_TITLE = "kajian_title"
             val USTADZ_NAME = "ustadz_name"
@@ -18,10 +17,7 @@ object DatabaseContract {
             val IMG_RESOURCE = "img_resource"
             val DATE_ANNOUNCE = "date_announce"
             val DATE_DUE = "date_due"
-            val POST_DATE = "post_date"
-            val CONTENT = "content"
-            val HAS_IMG = "has_img"
-            val IMGURL = "imgurl"
+
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.kajianid.android.databases
+package com.kajianid.android.databases.kajian
 
 import android.database.Cursor
 import com.kajianid.android.data.Kajian

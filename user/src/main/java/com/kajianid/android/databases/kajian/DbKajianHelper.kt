@@ -1,13 +1,13 @@
-package com.kajianid.android.databases
+package com.kajianid.android.databases.kajian
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
-import com.kajianid.android.databases.DatabaseContract.KajianColumns.Companion.ID
-import com.kajianid.android.databases.DatabaseContract.KajianColumns.Companion.TABLE_NAME_KAJIAN
-import kotlin.jvm.Throws
+import com.kajianid.android.databases.DatabaseHelper
+import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.ID
+import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.TABLE_NAME_KAJIAN
 
 class DbKajianHelper (context: Context) {
     companion object {
@@ -17,10 +17,8 @@ class DbKajianHelper (context: Context) {
         private lateinit var database: SQLiteDatabase
 
 
-        fun getInstance(context: Context): DbKajianHelper = INSTANCE
-                ?: synchronized(this) {
-            INSTANCE
-                    ?: DbKajianHelper(context)
+        fun getInstance(context: Context): DbKajianHelper = INSTANCE ?: synchronized(this) {
+            INSTANCE ?: DbKajianHelper(context)
         }
 
     }
