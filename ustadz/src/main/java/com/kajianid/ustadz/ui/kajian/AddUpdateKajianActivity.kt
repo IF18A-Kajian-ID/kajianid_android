@@ -116,9 +116,9 @@ class AddUpdateKajianActivity : AppCompatActivity() {
                     ) == PackageManager.PERMISSION_GRANTED) {
                 val i = Intent(
                         Intent.ACTION_PICK,
-                        MediaStore.Images.Media.INTERNAL_CONTENT_URI
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                 )
-                startActivity(i)
+                startActivityForResult(i, RESULT_LOAD_IMAGE)
             } else {
                 Toast.makeText(
                         this,
@@ -302,7 +302,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             params.put("mosque_id", mosqueId)
             if (selectedItem == categories[0]) {
                 params.put("address", kajianAddress)
-                if (binding!!.tvKajianImagePath.text.toString() == getString(R.string.example_path)) {
+                if (binding!!.tvKajianImagePath.text.toString() != getString(R.string.example_path)) {
                     val file = File(binding!!.tvKajianImagePath.text.toString())
                     if (file.isFile) params.put("file", file) else Toast.makeText(this, "Not found: " + file.absolutePath, Toast.LENGTH_LONG).show()
                 }

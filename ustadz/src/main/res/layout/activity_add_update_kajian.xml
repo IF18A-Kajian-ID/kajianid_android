@@ -117,7 +117,7 @@
                     android:maxLines="1"
                     android:textColor="@android:color/white"
                     android:text="@string/example_path"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
