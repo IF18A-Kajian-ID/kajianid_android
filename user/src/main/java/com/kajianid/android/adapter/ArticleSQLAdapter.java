@@ -1,25 +1,27 @@
-package com.kajianid.android.Adapter;
+package com.kajianid.android.adapter;
 
-
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.kajianid.android.ReadArticleActivity;
+import com.kajianid.android.activities.ReadArticleSQLActivity;
 import com.kajianid.android.data.Article;
 import com.kajianid.android.databinding.ListArticleBinding;
+
 import java.util.ArrayList;
 
-public class ListArticleAdapter extends RecyclerView.Adapter<ListArticleAdapter.Myarticle> {
-
-
+public class ArticleSQLAdapter extends RecyclerView.Adapter<ArticleSQLAdapter.ArticleSQLViewHolder> {
+    private final Context context;
     ArrayList<Article> mArticle = new ArrayList<>();
 
-    public ListArticleAdapter() {
+    public ArticleSQLAdapter(Context context) {
+        this.context = context;
     }
 
     public void setArticle(ArrayList<Article> mArticle) {
@@ -31,14 +33,14 @@ public class ListArticleAdapter extends RecyclerView.Adapter<ListArticleAdapter.
 
     @NonNull
     @Override
-    public Myarticle onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ArticleSQLAdapter.ArticleSQLViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ListArticleBinding binding = ListArticleBinding.inflate(LayoutInflater.from(parent.getContext()));
-        return new Myarticle(binding);
+        return new ArticleSQLAdapter.ArticleSQLViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final Myarticle binding, final int position) {
-        binding.bind(mArticle.get(position));
+    public void onBindViewHolder(@NonNull ArticleSQLAdapter.ArticleSQLViewHolder holder, int position) {
+        holder.bind(mArticle.get(position));
     }
 
     @Override
@@ -46,24 +48,33 @@ public class ListArticleAdapter extends RecyclerView.Adapter<ListArticleAdapter.
         return mArticle == null ? 0 : mArticle.size();
     }
 
-    static class Myarticle extends RecyclerView.ViewHolder {
+    static class ArticleSQLViewHolder extends RecyclerView.ViewHolder {
 
         private final ListArticleBinding binding;
 
-        public Myarticle(@NonNull ListArticleBinding itemView) {
+        public ArticleSQLViewHolder(@NonNull ListArticleBinding itemView) {
             super(itemView.getRoot());
             this.binding = itemView;
         }
 
         public void bind(Article article) {
-            Glide.with(binding.getRoot().getContext()).asBitmap().load(article.getImgUrl()).into(binding.IJudul);
             binding.TVJudul.setText(article.getTitle());
             binding.TVRingkasan.setText(article.getContent());
             binding.TVTanggal.setText(article.getPostDate());
             binding.TVUstadz.setText(article.getUstadzName());
+
+            if (article.getHasImg().equals("false")) {
+                binding.IJudul.setVisibility(View.GONE);
+            } else {
+                Glide.with(binding.getRoot().getContext())
+                        .asBitmap()
+                        .load(article.getImgUrl())
+                        .into(binding.IJudul);
+            }
+
             binding.getRoot().setOnClickListener(view -> {
-                Intent artikelIntent = new Intent(binding.getRoot().getContext(), ReadArticleActivity.class);
-                artikelIntent.putExtra(ReadArticleActivity.EXTRA_ARTICLE_ID, article.getId());
+                Intent artikelIntent = new Intent(binding.getRoot().getContext(), ReadArticleSQLActivity.class);
+                artikelIntent.putExtra(ReadArticleSQLActivity.EXTRA_PARCEL_ARTICLES, article.getId());
                 binding.getRoot().getContext().startActivity(artikelIntent);
             });
         }

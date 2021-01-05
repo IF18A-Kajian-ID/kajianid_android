@@ -1,4 +1,4 @@
-package com.kajianid.android
+package com.kajianid.android.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +9,8 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kajianid.android.Adapter.ListKajianAdapter
+import com.kajianid.android.R
+import com.kajianid.android.adapter.ListKajianAdapter
 import com.kajianid.android.databinding.ActivityKajianBinding
 import com.kajianid.android.viewmodels.KajianViewModel
 import kotlinx.coroutines.Dispatchers

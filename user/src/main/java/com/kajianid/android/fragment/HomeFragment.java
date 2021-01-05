@@ -11,10 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kajianid.android.ArticleIslamiActivity;
-import com.kajianid.android.DataSessionHandler;
-import com.kajianid.android.KajianActivity;
-import com.kajianid.android.KajianJavaActivity;
+import com.kajianid.android.activities.ArticleIslamiActivity;
+import com.kajianid.android.activities.DataSessionHandler;
+import com.kajianid.android.activities.KajianActivity;
 import com.kajianid.android.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {

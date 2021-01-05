@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="@layout/item_kajian" />
+            tools:listitem="@layout/item_mosque_list" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -71,6 +71,7 @@
         android:layout_height="0dp"
         android:background="@android:color/white"
         android:padding="30dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

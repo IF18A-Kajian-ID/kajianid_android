@@ -67,7 +67,7 @@ public class ShowKajianViewModel extends ViewModel {
                     JSONArray list = resultObject.getJSONArray("data");
 
                     JSONObject kajianJSONObject = list.getJSONObject(0);
-                    String title = kajianJSONObject.getString("title");
+                    String title = kajianJSONObject.getString("kajian_title");
                     String ustadzName = kajianJSONObject.getString("ustadz_name");
                     String mosqueId = kajianJSONObject.getString("mosque_id");
                     String mosqueName = kajianJSONObject.getString("mosque_name");
@@ -80,11 +80,9 @@ public class ShowKajianViewModel extends ViewModel {
                     String dateDue = kajianJSONObject.getString("date_due");
 
                     DateFormat dateAnnounceD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-                    assert dateAnnounceD != null;
                     String dateAnnounceFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateAnnounceD.parse(dateAnnounce));
 
                     DateFormat dateDueD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-                    assert dateDueD != null;
                     String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDueD.parse(dateDue));
 
                     resultMap.put("status", true);
@@ -145,7 +143,7 @@ public class ShowKajianViewModel extends ViewModel {
                     JSONArray list = resultObject.getJSONArray("data");
 
                     JSONObject kajianJSONObject = list.getJSONObject(0);
-                    String title = kajianJSONObject.getString("title");
+                    String title = kajianJSONObject.getString("kajian_title");
                     String ustadzName = kajianJSONObject.getString("ustadz_name");
                     String mosqueId = kajianJSONObject.getString("mosque_id");
                     String mosqueName = kajianJSONObject.getString("mosque_name");

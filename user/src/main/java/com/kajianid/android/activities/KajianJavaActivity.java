@@ -1,14 +1,16 @@
-package com.kajianid.android;
+package com.kajianid.android.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ActivityAboutMaratunSolehah extends AppCompatActivity {
+import com.kajianid.android.R;
+
+public class KajianJavaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_maratun_solehah);
+        setContentView(R.layout.activity_kajian);
     }
 }
