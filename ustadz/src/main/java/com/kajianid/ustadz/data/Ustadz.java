@@ -4,6 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Ustadz implements Parcelable {
+    public static final Creator<Ustadz> CREATOR = new Creator<Ustadz>() {
+        @Override
+        public Ustadz createFromParcel(Parcel in) {
+            return new Ustadz(in);
+        }
+
+        @Override
+        public Ustadz[] newArray(int size) {
+            return new Ustadz[size];
+        }
+    };
     private String name;
     private String phone;
     private String address;
@@ -21,18 +32,6 @@ public class Ustadz implements Parcelable {
         email = in.readString();
         gender = in.readString();
     }
-
-    public static final Creator<Ustadz> CREATOR = new Creator<Ustadz>() {
-        @Override
-        public Ustadz createFromParcel(Parcel in) {
-            return new Ustadz(in);
-        }
-
-        @Override
-        public Ustadz[] newArray(int size) {
-            return new Ustadz[size];
-        }
-    };
 
     public String getName() {
         return name;

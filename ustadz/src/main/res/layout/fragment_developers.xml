@@ -15,9 +15,9 @@
             android:id="@+id/civPhoto"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_margin="16dp"
             android:layout_gravity="center"
-            android:elevation="1dp"/>
+            android:layout_margin="16dp"
+            android:elevation="1dp" />
 
         <TextView
             android:id="@+id/tvName"
@@ -25,9 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/example_about_name"
+            android:textColor="?android:textColorPrimary"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="?android:textColorPrimary"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvNim"
@@ -56,10 +56,10 @@
                     android:id="@+id/tvGrade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     android:layout_weight="1"
-                    android:textColor="?android:textColorPrimary"
-                    android:text="@string/example_about_grade" />
+                    android:text="@string/example_about_grade"
+                    android:textAlignment="textEnd"
+                    android:textColor="?android:textColorPrimary" />
 
             </TableRow>
 
@@ -78,10 +78,10 @@
                     android:id="@+id/tvYearRegistered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     android:layout_weight="1"
-                    android:textColor="?android:textColorPrimary"
-                    android:text="@string/example_about_year_registered" />
+                    android:text="@string/example_about_year_registered"
+                    android:textAlignment="textEnd"
+                    android:textColor="?android:textColorPrimary" />
 
             </TableRow>
 
@@ -100,10 +100,10 @@
                     android:id="@+id/tvGitHub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     android:layout_weight="1"
-                    android:textColor="?android:textColorPrimary"
-                    android:text="@string/example_about_github" />
+                    android:text="@string/example_about_github"
+                    android:textAlignment="textEnd"
+                    android:textColor="?android:textColorPrimary" />
 
             </TableRow>
 
@@ -122,12 +122,12 @@
                     android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     android:layout_weight="1"
                     android:autoLink="email"
-                    android:textColorLink="?android:textColorPrimary"
+                    android:text="@string/example_about_email"
+                    android:textAlignment="textEnd"
                     android:textColor="?android:textColorPrimary"
-                    android:text="@string/example_about_email" />
+                    android:textColorLink="?android:textColorPrimary" />
 
             </TableRow>
 
@@ -146,10 +146,10 @@
                     android:id="@+id/tvAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     android:layout_weight="1"
-                    android:textColor="?android:textColorPrimary"
-                    android:text="@string/example_about_address" />
+                    android:text="@string/example_about_address"
+                    android:textAlignment="textEnd"
+                    android:textColor="?android:textColorPrimary" />
 
             </TableRow>
 

@@ -28,8 +28,8 @@
                 android:id="@+id/img_kajian"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/icon"
-                android:contentDescription="@string/icon_kajian" />
+                android:contentDescription="@string/icon_kajian"
+                android:src="@drawable/icon" />
 
             <TextView
                 android:id="@+id/tv_title"
@@ -40,9 +40,9 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@string/example_kajian_title"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="?android:textColorPrimary"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_mosque_address"

@@ -1,10 +1,10 @@
 package com.kajianid.ustadz.ui.credential;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.data.Credential;
@@ -89,7 +89,7 @@ public class EditPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        binding = null;
         super.onDestroy();
+        binding = null;
     }
 }

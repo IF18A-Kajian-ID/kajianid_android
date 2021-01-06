@@ -57,6 +57,12 @@ public class SettingsActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
     public static class SettingsFragment extends PreferenceFragmentCompat {
 
         @Override
@@ -151,11 +157,5 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
             });
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        binding = null;
-        super.onDestroy();
     }
 }

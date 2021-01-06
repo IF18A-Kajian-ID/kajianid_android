@@ -4,17 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Mosque implements Parcelable {
-    protected Mosque(Parcel in) {
-        id = in.readInt();
-        mosqueName = in.readString();
-        latLng = in.readString();
-        address = in.readString();
-    }
-
-    public Mosque() {
-
-    }
-
     public static final Creator<Mosque> CREATOR = new Creator<Mosque>() {
         @Override
         public Mosque createFromParcel(Parcel in) {
@@ -26,6 +15,21 @@ public class Mosque implements Parcelable {
             return new Mosque[size];
         }
     };
+    private int id;
+    private String mosqueName;
+    private String latLng;
+    private String address;
+
+    protected Mosque(Parcel in) {
+        id = in.readInt();
+        mosqueName = in.readString();
+        latLng = in.readString();
+        address = in.readString();
+    }
+
+    public Mosque() {
+
+    }
 
     public int getId() {
         return id;
@@ -58,11 +62,6 @@ public class Mosque implements Parcelable {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    private int id;
-    private String mosqueName;
-    private String latLng;
-    private String address;
 
     @Override
     public int describeContents() {

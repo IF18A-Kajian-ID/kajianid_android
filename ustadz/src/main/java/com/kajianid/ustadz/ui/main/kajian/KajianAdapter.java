@@ -14,8 +14,6 @@ import com.kajianid.ustadz.databinding.ItemKajianBinding;
 import com.kajianid.ustadz.ui.kajian.ShowKajianActivity;
 import com.kajianid.ustadz.utils.StringHelper;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class KajianAdapter extends RecyclerView.Adapter<KajianAdapter.KajianViewHolder> {

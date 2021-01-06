@@ -4,11 +4,24 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Article implements Parcelable {
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
     private String id;
     private String title;
     private String content;
     private String post_date;
     private boolean hasImg;
+    private String imgUrl;
+    private int likes;
 
     public Article() {
 
@@ -23,18 +36,6 @@ public class Article implements Parcelable {
         imgUrl = in.readString();
         likes = in.readInt();
     }
-
-    public static final Creator<Article> CREATOR = new Creator<Article>() {
-        @Override
-        public Article createFromParcel(Parcel in) {
-            return new Article(in);
-        }
-
-        @Override
-        public Article[] newArray(int size) {
-            return new Article[size];
-        }
-    };
 
     public String getId() {
         return id;
@@ -91,9 +92,6 @@ public class Article implements Parcelable {
     public void setLikes(int likes) {
         this.likes = likes;
     }
-
-    private String imgUrl;
-    private int likes;
 
     @Override
     public int describeContents() {

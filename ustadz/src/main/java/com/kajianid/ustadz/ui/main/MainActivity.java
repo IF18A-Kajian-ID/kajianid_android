@@ -1,12 +1,12 @@
 package com.kajianid.ustadz.ui.main;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.databinding.ActivityMainBinding;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        binding = null;
         super.onDestroy();
+        binding = null;
     }
 }

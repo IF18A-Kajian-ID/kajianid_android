@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kajianid.ustadz.R
@@ -22,7 +23,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class ReadArticleActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityReadArticleBinding
+    private var binding: ActivityReadArticleBinding? = null
     private lateinit var readArticleViewModel: ReadArticleViewModel
     private var id: String? = ""
     private var title = ""
@@ -37,15 +38,15 @@ class ReadArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReadArticleBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        setContentView(binding?.root)
+        setSupportActionBar(binding?.toolbar!!)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.read_article)
 
-        binding.svArticle.visibility = View.GONE
-        binding.progressMessage.visibility = View.VISIBLE
-        binding.errorMessage.visibility = View.GONE
+        binding?.svArticle?.visibility = View.GONE
+        binding?.progressMessage?.visibility = View.VISIBLE
+        binding?.errorMessage?.visibility = View.GONE
 
         val bundle = intent.extras
         if (bundle != null) {
@@ -56,7 +57,7 @@ class ReadArticleActivity : AppCompatActivity() {
                 if (it["status"] == true) {
                     title = it["title"].toString()
                     content = it["content"].toString()
-                    binding.contentReadArticle.tvArticleTitle.text = it["title"].toString()
+                    binding?.contentReadArticle?.tvArticleTitle?.text = it["title"].toString()
                     if (it["hasImg"] == true) {
                         Glide.with(this)
                                 .load(
@@ -64,35 +65,35 @@ class ReadArticleActivity : AppCompatActivity() {
                                                 "assets/articles/" + id + "." +
                                                 Objects.requireNonNull(it["extension"]).toString()
                                 )
-                                .into(binding.contentReadArticle.imgArticle)
+                                .into(binding?.contentReadArticle?.imgArticle!!)
                     } else {
-                        binding.contentReadArticle.imgArticle.visibility = View.GONE
+                        binding?.contentReadArticle?.imgArticle?.visibility = View.GONE
                     }
                     val likes = it["like"].toString()
-                    binding.contentReadArticle.tvLikeCount.text = likes
-                    binding.contentReadArticle.tvPostDate.text = it["post_date"].toString()
-                    binding.contentReadArticle.tvPostContent.text = it["content"].toString()
-                    binding.progressMessage.visibility = View.GONE
-                    binding.errorMessage.visibility = View.GONE
-                    binding.svArticle.visibility = View.VISIBLE
+                    binding?.contentReadArticle?.tvLikeCount?.text = likes
+                    binding?.contentReadArticle?.tvPostDate?.text = it["post_date"].toString()
+                    binding?.contentReadArticle?.tvPostContent?.text = it["content"].toString()
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.errorMessage?.visibility = View.GONE
+                    binding?.svArticle?.visibility = View.VISIBLE
                 } else {
-                    binding.progressMessage.visibility = View.GONE
-                    binding.errorMessage.visibility = View.VISIBLE
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.errorMessage?.visibility = View.VISIBLE
                     val errorMessage = """
                     Error!
                     [${it["code"]}]: ${it["message"]}
                     """.trimIndent()
-                    binding.tvErrorMessage.text = errorMessage
+                    binding?.tvErrorMessage?.text = errorMessage
                 }
             })
             readArticleViewModel.setArticleAsync(this, id)
         }
 
-        binding.pullToRefresh.setOnRefreshListener {
-            binding.svArticle.visibility = View.GONE
-            binding.pullToRefresh.isRefreshing = false
-            binding.errorMessage.visibility = View.GONE
-            binding.progressMessage.visibility = View.VISIBLE
+        binding?.pullToRefresh?.setOnRefreshListener {
+            binding?.svArticle?.visibility = View.GONE
+            binding?.pullToRefresh?.isRefreshing = false
+            binding?.errorMessage?.visibility = View.GONE
+            binding?.progressMessage?.visibility = View.VISIBLE
 
             GlobalScope.launch(Dispatchers.Main) {
                 val deferredArticles = async(Dispatchers.IO) {
@@ -102,36 +103,36 @@ class ReadArticleActivity : AppCompatActivity() {
                 if (it["status"] == true) {
                     title = it["title"].toString()
                     content = it["content"].toString()
-                    binding.contentReadArticle.tvArticleTitle.text = it["title"].toString()
+                    binding?.contentReadArticle?.tvArticleTitle?.text = it["title"].toString()
                     if (it["hasImg"] == true) {
                         Glide.with(applicationContext)
                                 .load(resources.getString(R.string.server) + "assets/articles/${id}.${it["extension"]}")
-                                .into(binding.contentReadArticle.imgArticle)
+                                .into(binding?.contentReadArticle?.imgArticle!!)
                     } else {
-                        binding.contentReadArticle.imgArticle.visibility = View.GONE
+                        binding?.contentReadArticle?.imgArticle?.visibility = View.GONE
                     }
                     val likes = it["like"].toString() + " ${resources.getString(R.string.likes)}"
-                    binding.contentReadArticle.tvLikeCount.text = likes
-                    binding.contentReadArticle.tvPostDate.text = it["post_date"].toString()
-                    binding.contentReadArticle.tvPostContent.text = it["content"].toString()
-                    binding.progressMessage.visibility = View.GONE
-                    binding.svArticle.visibility = View.VISIBLE
+                    binding?.contentReadArticle?.tvLikeCount?.text = likes
+                    binding?.contentReadArticle?.tvPostDate?.text = it["post_date"].toString()
+                    binding?.contentReadArticle?.tvPostContent?.text = it["content"].toString()
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.svArticle?.visibility = View.VISIBLE
                 } else {
-                    binding.progressMessage.visibility = View.GONE
-                    binding.errorMessage.visibility = View.VISIBLE
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.errorMessage?.visibility = View.VISIBLE
                     val errorMessage = """
                             Error!
                             [${it["code"]}]: ${it["message"]}
                         """.trimIndent()
-                    binding.tvErrorMessage.text = errorMessage
+                    binding?.tvErrorMessage?.text = errorMessage
                 }
             }
         }
 
-        binding.btnRefresh.setOnClickListener { _ ->
-            binding.svArticle.visibility = View.GONE
-            binding.errorMessage.visibility = View.GONE
-            binding.progressMessage.visibility = View.VISIBLE
+        binding?.btnRefresh?.setOnClickListener { _ ->
+            binding?.svArticle?.visibility = View.GONE
+            binding?.errorMessage?.visibility = View.GONE
+            binding?.progressMessage?.visibility = View.VISIBLE
             GlobalScope.launch(Dispatchers.Main) {
                 val deferredArticles = async(Dispatchers.IO) {
                     id.let { readArticleViewModel.setArticle(applicationContext, it) }
@@ -140,28 +141,28 @@ class ReadArticleActivity : AppCompatActivity() {
                 if (it["status"] == true) {
                     title = it["title"].toString()
                     content = it["content"].toString()
-                    binding.contentReadArticle.tvArticleTitle.text = it["title"].toString()
+                    binding?.contentReadArticle?.tvArticleTitle?.text = it["title"].toString()
                     if (it["hasImg"] == true) {
                         Glide.with(applicationContext)
                                 .load(resources.getString(R.string.server) + "assets/articles/${id}.${it["extension"]}")
-                                .into(binding.contentReadArticle.imgArticle)
+                                .into(binding?.contentReadArticle?.imgArticle!!)
                     } else {
-                        binding.contentReadArticle.imgArticle.visibility = View.GONE
+                        binding?.contentReadArticle?.imgArticle?.visibility = View.GONE
                     }
                     val likes = it["like"].toString() + " ${resources.getString(R.string.likes)}"
-                    binding.contentReadArticle.tvLikeCount.text = likes
-                    binding.contentReadArticle.tvPostDate.text = it["post_date"].toString()
-                    binding.contentReadArticle.tvPostContent.text = it["content"].toString()
-                    binding.progressMessage.visibility = View.GONE
-                    binding.svArticle.visibility = View.VISIBLE
+                    binding?.contentReadArticle?.tvLikeCount?.text = likes
+                    binding?.contentReadArticle?.tvPostDate?.text = it["post_date"].toString()
+                    binding?.contentReadArticle?.tvPostContent?.text = it["content"].toString()
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.svArticle?.visibility = View.VISIBLE
                 } else {
-                    binding.progressMessage.visibility = View.GONE
-                    binding.errorMessage.visibility = View.VISIBLE
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.errorMessage?.visibility = View.VISIBLE
                     val errorMessage = """
                             Error!
                             [${it["code"]}]: ${it["message"]}
                         """.trimIndent()
-                    binding.tvErrorMessage.text = errorMessage
+                    binding?.tvErrorMessage?.text = errorMessage
                 }
             }
         }
@@ -195,6 +196,22 @@ class ReadArticleActivity : AppCompatActivity() {
                 val alertDialog = alert.create()
                 alertDialog.show()
             }
+            R.id.menuShare -> {
+                val mimeType = "text/plain"
+                ShareCompat.IntentBuilder.from(this).apply {
+                    setType(mimeType)
+                    setChooserTitle("Bagikan artikel ini sekarang!")
+                    setText("""
+*${binding?.contentReadArticle?.tvArticleTitle?.text}*
+_${binding?.contentReadArticle?.tvPostDate?.text}_
+
+${binding?.contentReadArticle?.tvPostContent?.text}
+
+Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
+                    """.trimIndent())
+                    startChooser()
+                }
+            }
         }
         return true
     }
@@ -226,9 +243,9 @@ class ReadArticleActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK && requestCode == AddUpdateArticleActivity.RESULT_UPDATE) {
-            binding.svArticle.visibility = View.GONE
-            binding.errorMessage.visibility = View.GONE
-            binding.progressMessage.visibility = View.VISIBLE
+            binding?.svArticle?.visibility = View.GONE
+            binding?.errorMessage?.visibility = View.GONE
+            binding?.progressMessage?.visibility = View.VISIBLE
             GlobalScope.launch(Dispatchers.Main) {
                 val deferredArticles = async(Dispatchers.IO) {
                     id.let { readArticleViewModel.setArticle(applicationContext, it) }
@@ -237,28 +254,28 @@ class ReadArticleActivity : AppCompatActivity() {
                 if (it["status"] == true) {
                     title = it["title"].toString()
                     content = it["content"].toString()
-                    binding.contentReadArticle.tvArticleTitle.text = it["title"].toString()
+                    binding?.contentReadArticle?.tvArticleTitle?.text = it["title"].toString()
                     if (it["hasImg"] == true) {
                         Glide.with(applicationContext)
                                 .load(resources.getString(R.string.server) + "assets/articles/${id}.${it["extension"]}")
-                                .into(binding.contentReadArticle.imgArticle)
+                                .into(binding?.contentReadArticle?.imgArticle!!)
                     } else {
-                        binding.contentReadArticle.imgArticle.visibility = View.GONE
+                        binding?.contentReadArticle?.imgArticle?.visibility = View.GONE
                     }
                     val likes = it["like"].toString() + " ${resources.getString(R.string.likes)}"
-                    binding.contentReadArticle.tvLikeCount.text = likes
-                    binding.contentReadArticle.tvPostDate.text = it["post_date"].toString()
-                    binding.contentReadArticle.tvPostContent.text = it["content"].toString()
-                    binding.progressMessage.visibility = View.GONE
-                    binding.svArticle.visibility = View.VISIBLE
+                    binding?.contentReadArticle?.tvLikeCount?.text = likes
+                    binding?.contentReadArticle?.tvPostDate?.text = it["post_date"].toString()
+                    binding?.contentReadArticle?.tvPostContent?.text = it["content"].toString()
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.svArticle?.visibility = View.VISIBLE
                 } else {
-                    binding.progressMessage.visibility = View.GONE
-                    binding.errorMessage.visibility = View.VISIBLE
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.errorMessage?.visibility = View.VISIBLE
                     val errorMessage = """
                             Error!
                             [${it["code"]}]: ${it["message"]}
                         """.trimIndent()
-                    binding.tvErrorMessage.text = errorMessage
+                    binding?.tvErrorMessage?.text = errorMessage
                 }
             }
         }
