@@ -89,7 +89,7 @@ public class EditPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        binding = null;
         super.onDestroy();
+        binding = null;
     }
 }

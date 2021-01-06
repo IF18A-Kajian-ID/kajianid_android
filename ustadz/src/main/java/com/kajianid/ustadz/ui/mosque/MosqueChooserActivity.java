@@ -109,7 +109,7 @@ public class MosqueChooserActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        binding = null;
         super.onDestroy();
+        binding = null;
     }
 }

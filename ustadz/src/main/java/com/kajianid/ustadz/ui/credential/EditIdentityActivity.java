@@ -32,6 +32,7 @@ public class EditIdentityActivity extends AppCompatActivity {
 
         binding.rlButtons.setVisibility(View.VISIBLE);
         binding.progressBar.setVisibility(View.GONE);
+        binding.btnCancel.setOnClickListener(it -> finish());
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -47,7 +48,7 @@ public class EditIdentityActivity extends AppCompatActivity {
             binding.edtPhoneNumber.setText(phone);
             binding.edtUstadzAddress.setText(address);
             binding.edtEmailAddress.setText(email);
-            if (gender.equals("L"))
+            if (gender.equalsIgnoreCase("L"))
                 binding.rgGender.check(R.id.rdMale);
             else
                 binding.rgGender.check(R.id.rdFemale);
@@ -74,7 +75,7 @@ public class EditIdentityActivity extends AppCompatActivity {
                     binding.rlButtons.setVisibility(View.GONE);
                     binding.progressBar.setVisibility(View.VISIBLE);
 
-                    char ustadzGender = (binding.rgGender.getCheckedRadioButtonId() == R.id.rdMale) ? 'L' : 'P';
+                    String ustadzGender = (binding.rgGender.getCheckedRadioButtonId() == R.id.rdMale) ? "L" : "P";
                     String api = getString(R.string.server) + "api/ustadz/identity/" + preference.getCredential().getUsername();
                     AsyncHttpClient client = new AsyncHttpClient();
 
@@ -104,7 +105,7 @@ public class EditIdentityActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        binding = null;
         super.onDestroy();
+        binding = null;
     }
 }

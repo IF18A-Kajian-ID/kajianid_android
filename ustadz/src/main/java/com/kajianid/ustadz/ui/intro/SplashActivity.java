@@ -76,9 +76,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void fetchLoginData(String username, String password) {
+        binding.progressBar.setVisibility(View.VISIBLE);
         if (!StringHelper.isNullOrEmpty(username) || !StringHelper.isNullOrEmpty(password)) {
-            binding.progressBar.setVisibility(View.VISIBLE);
-
             String api = getString(R.string.server) + "api/ustadz/credential";
             AsyncHttpClient client = new AsyncHttpClient();
 
@@ -147,7 +146,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        binding = null;
         super.onDestroy();
+        binding = null;
     }
 }

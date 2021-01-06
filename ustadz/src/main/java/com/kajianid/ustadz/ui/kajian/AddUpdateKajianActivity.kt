@@ -431,8 +431,8 @@ class AddUpdateKajianActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        binding = null
         super.onDestroy()
+        binding = null
     }
 
     companion object {
