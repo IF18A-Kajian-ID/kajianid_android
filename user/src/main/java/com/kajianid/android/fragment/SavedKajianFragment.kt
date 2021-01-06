@@ -1,10 +1,10 @@
 package com.kajianid.android.fragment
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kajianid.android.R
 import com.kajianid.android.adapter.KajianSQLAdapter
@@ -17,12 +17,14 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class SavedKajianFragment : Fragment() {
-    private lateinit var binding: FragmentSavedKajianBinding
     private lateinit var kajianSQLAdapter: KajianSQLAdapter
     private lateinit var dbKajianHelper: DbKajianHelper
+    private lateinit var binding: FragmentSavedKajianBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentSavedKajianBinding.inflate(layoutInflater)
+
         binding.rvKajian.layoutManager = LinearLayoutManager(context)
         binding.rvKajian.adapter = kajianSQLAdapter
         binding.rvKajian.setHasFixedSize(true) //tidak efek ketika diputar
@@ -51,8 +53,7 @@ class SavedKajianFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        kajianSQLAdapter = KajianSQLAdapter(requireContext())
-
+        kajianSQLAdapter = KajianSQLAdapter()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -65,5 +66,4 @@ class SavedKajianFragment : Fragment() {
         super.onResume()
         loadKajian()
     }
-
 }
