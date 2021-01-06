@@ -202,12 +202,12 @@ class ReadArticleActivity : AppCompatActivity() {
                     setType(mimeType)
                     setChooserTitle("Bagikan artikel ini sekarang!")
                     setText("""
-                        *${binding?.contentReadArticle?.tvArticleTitle?.text}*
-                        _${binding?.contentReadArticle?.tvPostDate?.text}_
-                        
-                        ${binding?.contentReadArticle?.tvPostContent?.text}
-                        
-                        Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
+*${binding?.contentReadArticle?.tvArticleTitle?.text}*
+_${binding?.contentReadArticle?.tvPostDate?.text}_
+
+${binding?.contentReadArticle?.tvPostContent?.text}
+
+Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
                     """.trimIndent())
                     startChooser()
                 }

@@ -261,15 +261,15 @@ class ShowKajianActivity : AppCompatActivity() {
                     setType(mimeType)
                     setChooserTitle("Bagikan kajian ini sekarang!")
                     setText("""
-                        Kajian: ${binding?.contentShowKajian?.tvKajianTitle?.text}
-                        Waktu Pelaksanaan: ${binding?.contentShowKajian?.tvTimestampDue?.text}
-                        
-                        Kajian ini bersifat ${kajian.place}
-                        
-                        Deskripsi:
-                        ${kajian.description}
-                        
-                        Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
+Kajian: ${binding?.contentShowKajian?.tvKajianTitle?.text}
+Waktu Pelaksanaan: ${binding?.contentShowKajian?.tvTimestampDue?.text}
+
+Kajian ini bersifat ${kajian.place}
+
+Deskripsi:
+${kajian.description}
+
+Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
                     """.trimIndent())
                     startChooser()
                 }
