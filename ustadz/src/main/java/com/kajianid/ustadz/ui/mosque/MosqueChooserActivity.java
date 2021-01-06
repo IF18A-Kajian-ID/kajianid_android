@@ -5,11 +5,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,14 +20,12 @@ import java.util.Objects;
 
 public class MosqueChooserActivity extends AppCompatActivity {
 
-    private MosqueChooserAdapter mosqueChooserAdapter;
-    private MosqueChooserViewModel mosqueChooserViewModel;
-    private ActivityMosqueChooserBinding binding;
-
     public static final String EXTRA_MOSQUE_RESULT = "extra_mosque_result";
     public static final String EXTRA_IS_USTADZ_ONLY = "extra_is_ustadz_only";
     public static final int REQUEST_MOSQUE = 100;
-
+    private MosqueChooserAdapter mosqueChooserAdapter;
+    private MosqueChooserViewModel mosqueChooserViewModel;
+    private ActivityMosqueChooserBinding binding;
     private boolean isUstadzOnly = true;
 
     @Override
@@ -51,7 +47,9 @@ public class MosqueChooserActivity extends AppCompatActivity {
 
         binding.progressMessage.setVisibility(View.VISIBLE);
 
-        binding.btnBack.setOnClickListener(ignored -> { finish(); });
+        binding.btnBack.setOnClickListener(ignored -> {
+            finish();
+        });
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -90,7 +88,7 @@ public class MosqueChooserActivity extends AppCompatActivity {
                 binding.progressMessage.setVisibility(View.VISIBLE);
                 mosqueChooserViewModel.setMosqueAsync(
                         MosqueChooserActivity.this,
-                mosqueChooserAdapter,
+                        mosqueChooserAdapter,
                         query,
                         isUstadzOnly);
                 searchView.clearFocus();

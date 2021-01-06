@@ -2,9 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference
-        app:key="first"
         app:defaultValue="false"
-        app:isPreferenceVisible="false" />
+        app:isPreferenceVisible="false"
+        app:key="first" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"

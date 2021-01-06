@@ -24,8 +24,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
@@ -45,7 +43,7 @@ public class KajianViewModel extends ViewModel {
         }
 
         CredentialPreference credential = new CredentialPreference(context);
-        String[] ret = { null };
+        String[] ret = {null};
         String url = context.getString(R.string.server) + "api/kajian";
         ArrayList<Kajian> listItems = new ArrayList<>();
         SyncHttpClient client = new SyncHttpClient();
@@ -110,7 +108,7 @@ public class KajianViewModel extends ViewModel {
 
     public boolean setKajianAsync(Context context, KajianAdapter adapter, String searchQuery) {
         CredentialPreference credential = new CredentialPreference(context);
-        boolean[] ret = { false };
+        boolean[] ret = {false};
         String url = context.getString(R.string.server) + "api/kajian";
         ArrayList<Kajian> listItems = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
