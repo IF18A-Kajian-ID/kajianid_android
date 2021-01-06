@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kajianid.ustadz.R
@@ -253,6 +254,25 @@ class ShowKajianActivity : AppCompatActivity() {
                         .setCancelable(false)
                 val alertDialog = alert.create()
                 alertDialog.show()
+            }
+            R.id.menuShare -> {
+                val mimeType = "text/plain"
+                ShareCompat.IntentBuilder.from(this).apply {
+                    setType(mimeType)
+                    setChooserTitle("Bagikan kajian ini sekarang!")
+                    setText("""
+                        Kajian: ${binding?.contentShowKajian?.tvKajianTitle?.text}
+                        Waktu Pelaksanaan: ${binding?.contentShowKajian?.tvTimestampDue?.text}
+                        
+                        Kajian ini bersifat ${kajian.place}
+                        
+                        Deskripsi:
+                        ${kajian.description}
+                        
+                        Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
+                    """.trimIndent())
+                    startChooser()
+                }
             }
         }
         return true
