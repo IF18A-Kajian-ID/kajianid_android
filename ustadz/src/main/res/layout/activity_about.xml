@@ -33,7 +33,7 @@
             android:id="@+id/appIcon"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/intro3" />
+            android:src="@drawable/icon" />
 
         <TextView
             android:id="@+id/appName"

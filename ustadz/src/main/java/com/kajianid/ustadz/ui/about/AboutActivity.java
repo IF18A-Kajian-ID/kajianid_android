@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.databinding.ActivityAboutBinding;
 
+import java.util.Objects;
+
 public class AboutActivity extends AppCompatActivity {
 
     private ActivityAboutBinding binding;
@@ -28,7 +30,7 @@ public class AboutActivity extends AppCompatActivity {
         binding.tabs.setupWithViewPager(binding.vpAbout);
 
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle(getString(R.string.about));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.about));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
