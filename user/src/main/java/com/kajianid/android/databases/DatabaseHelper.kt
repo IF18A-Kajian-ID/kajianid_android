@@ -3,19 +3,8 @@ package com.kajianid.android.databases
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.ContactsContract.CommonDataKinds.Email.ADDRESS
-import android.provider.ContactsContract.CommonDataKinds.Organization.TITLE
-import android.provider.MediaStore.Images.ImageColumns.DESCRIPTION
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.DATE_ANNOUNCE
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.DATE_DUE
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.ID
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.IMG_RESOURCE
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.KAJIAN_TITLE
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.MOSQUE_NAME
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.PLACE
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.TABLE_NAME_KAJIAN
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.USTADZ_NAME
-import com.kajianid.android.databases.kajian.DatabaseContract.KajianColumns.Companion.YOUTUBE_LINK
+import com.kajianid.android.databases.DatabaseContract.ArticleColums.Companion.TABLE_NAME_ARTICLES
+import com.kajianid.android.databases.DatabaseContract.KajianColumns.Companion.TABLE_NAME_KAJIAN
 
 class DatabaseHelper (context: Context):
         SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
@@ -24,22 +13,34 @@ class DatabaseHelper (context: Context):
         private const val DATABASE_VERSION = 1
         private val SQL_CREATE_NAME_KAJIAN = """
             CREATE TABLE $TABLE_NAME_KAJIAN(
-            $ID varchar(5) not null primary key,
-            $KAJIAN_TITLE Text,
-            $USTADZ_NAME varchar(15),
-            $MOSQUE_NAME varchar(30),
-            $ADDRESS Text,
-            $PLACE varchar(30),
-            $YOUTUBE_LINK Text,
-            $DESCRIPTION Text,
-            $IMG_RESOURCE Text,
-            $DATE_ANNOUNCE Text,
-            $DATE_DUE Text)
+            ${DatabaseContract.KajianColumns.ID} varchar(5) not null primary key,
+            ${DatabaseContract.KajianColumns.KAJIAN_TITLE} Text,
+            ${DatabaseContract.KajianColumns.USTADZ_NAME} varchar(15),
+            ${DatabaseContract.KajianColumns.MOSQUE_NAME} varchar(30),
+            ${DatabaseContract.KajianColumns.ADDRESS} Text,
+            ${DatabaseContract.KajianColumns.PLACE} varchar(30),
+            ${DatabaseContract.KajianColumns.YOUTUBE_LINK} Text,
+            ${DatabaseContract.KajianColumns.DESCRIPTION} Text,
+            ${DatabaseContract.KajianColumns.IMG_RESOURCE} Text,
+            ${DatabaseContract.KajianColumns.DATE_ANNOUNCE} Text,
+            ${DatabaseContract.KajianColumns.DATE_DUE} Text)
         """.trimIndent()
     }
 
+    private val SQL_CREATE_TABLE_ARTIKEL = """
+            CREATE TABLE $TABLE_NAME_ARTICLES(
+            ${DatabaseContract.ArticleColums.ID} varchar(5) not null primary key,
+            ${DatabaseContract.ArticleColums.TITLE} text,
+            ${DatabaseContract.ArticleColums.POST_DATE} Text,
+            ${DatabaseContract.ArticleColums.CONTENT} Text,
+            ${DatabaseContract.ArticleColums.HAS_IMG} Int,
+            ${DatabaseContract.ArticleColums.USTADZ_NAME} varchar(15),
+            ${DatabaseContract.ArticleColums.IMGURL} Text)
+        """.trimIndent()
+
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(SQL_CREATE_NAME_KAJIAN)
+        db?.execSQL(SQL_CREATE_TABLE_ARTIKEL)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

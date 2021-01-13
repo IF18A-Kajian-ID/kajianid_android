@@ -2,6 +2,7 @@ package com.kajianid.android.databases.kajian
 
 import android.database.Cursor
 import com.kajianid.android.data.Kajian
+import com.kajianid.android.databases.DatabaseContract
 
 object MappingHelper {
     fun mapCursorToArrayList(kajianCursor: Cursor?): ArrayList<Kajian> {

@@ -1,44 +1,46 @@
-package com.kajianid.android.databases.kajian
+package com.kajianid.android.databases.article
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
+import com.kajianid.android.databases.DatabaseContract.ArticleColums.Companion.ID
+import com.kajianid.android.databases.DatabaseContract.ArticleColums.Companion.TABLE_NAME_ARTICLES
 import com.kajianid.android.databases.DatabaseHelper
-import com.kajianid.android.databases.DatabaseContract.KajianColumns.Companion.ID
-import com.kajianid.android.databases.DatabaseContract.KajianColumns.Companion.TABLE_NAME_KAJIAN
 
-class DbKajianHelper (context: Context) {
+class DbArticleHelper (context: Context){
+
+
+
     companion object {
-        private const val DATABASE_TABLE = TABLE_NAME_KAJIAN
+        private const val DATABASE_TABLE = TABLE_NAME_ARTICLES
         private lateinit var databaseHelper: DatabaseHelper
-        private var INSTANCE: DbKajianHelper? = null
+        private var INSTANCE: DbArticleHelper? = null
         private lateinit var database: SQLiteDatabase
 
-
-        fun getInstance(context: Context): DbKajianHelper = INSTANCE ?: synchronized(this) {
-            INSTANCE ?: DbKajianHelper(context)
+        fun getInstance(context: Context): DbArticleHelper = INSTANCE ?: synchronized(this) {
+            INSTANCE ?: DbArticleHelper(context)
         }
 
     }
 
-    init {
+    init{
         databaseHelper = DatabaseHelper(context)
     }
 
     @Throws(SQLiteException::class)
-    fun open() {
+    fun open(){
         database = databaseHelper.writableDatabase
     }
 
-    fun close() {
+    fun close(){
         databaseHelper.close()
         if (database.isOpen) database.close()
     }
 
     fun queryAll(): Cursor {
-        return database.query(TABLE_NAME_KAJIAN,
+        return database.query(TABLE_NAME_ARTICLES,
                 null,
                 null,
                 null,
@@ -49,25 +51,21 @@ class DbKajianHelper (context: Context) {
 
     fun queryById(id: String): Cursor {
         return database.query(
-                TABLE_NAME_KAJIAN,
+                TABLE_NAME_ARTICLES,
                 null,
                 "$ID = ?",
                 arrayOf(id),
                 null,
                 null,
-                null,
                 null)
     }
-
     fun insert(values: ContentValues?): Long {
-        return database.insert(DATABASE_TABLE, null, values)
+        return database.insert(DATABASE_TABLE, null,values)
     }
-
-    fun update(id: String, values: ContentValues?): Int {
+    fun update(id: String, values: ContentValues?): Int{
         return database.update(DATABASE_TABLE, values, "$ID = ?", arrayOf(id))
     }
-
     fun deleteById(id: String): Int {
-        return database.delete(DATABASE_TABLE, "$ID = '$id'", null)
+        return database.delete(DATABASE_TABLE, "$ID = $id", null)
     }
 }

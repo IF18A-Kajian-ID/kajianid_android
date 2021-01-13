@@ -28,6 +28,7 @@
             android:layout_height="match_parent">
 
             <include
+                android:id="@+id/ContentReadArticle"
                 layout="@layout/activity_content_read_article" />
 
         </ScrollView>
