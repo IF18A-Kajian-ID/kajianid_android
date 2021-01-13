@@ -1,4 +1,4 @@
-package com.kajianid.ustadz.ui.about;
+package com.kajianid.android.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.kajianid.ustadz.databinding.FragmentDevelopersBinding;
-import com.kajianid.ustadz.utils.DeveloperData;
+import com.kajianid.android.databinding.FragmentDevelopersBinding;
+import com.kajianid.android.utils.DeveloperData;
 
 
 public class DevelopersFragment extends Fragment {

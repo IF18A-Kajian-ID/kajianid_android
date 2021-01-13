@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceManager
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroFragment
 import com.github.appintro.AppIntroPageTransformerType

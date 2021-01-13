@@ -8,17 +8,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import com.kajianid.android.activities.ActivityShowKajianSQL;
+import com.kajianid.android.activities.ShowKajianSQLActivity;
 import com.kajianid.android.data.Kajian;
 import com.kajianid.android.databinding.ListKajianBinding;
 import java.util.ArrayList;
 
 public class KajianSQLAdapter extends RecyclerView.Adapter<KajianSQLAdapter.KajianSQLViewHolder> {
-    private final Context context;
+    private Context context = null;
     ArrayList<Kajian> mKajian = new ArrayList<>();
 
     public KajianSQLAdapter(Context context) {
         this.context = context;
+    }
+
+    public KajianSQLAdapter() {
     }
 
     public void setKajian(ArrayList<Kajian> mKajian) {
@@ -70,8 +73,8 @@ public class KajianSQLAdapter extends RecyclerView.Adapter<KajianSQLAdapter.Kaji
             }
 
             binding.getRoot().setOnClickListener(view -> {
-                Intent kajianIntent = new Intent(binding.getRoot().getContext(), ActivityShowKajianSQL.class);
-                kajianIntent.putExtra(ActivityShowKajianSQL.EXTRA_PARCEL_KAJIAN, kajian.getId());
+                Intent kajianIntent = new Intent(binding.getRoot().getContext(), ShowKajianSQLActivity.class);
+                kajianIntent.putExtra(ShowKajianSQLActivity.EXTRA_PARCEL_KAJIAN, kajian.getId());
                 binding.getRoot().getContext().startActivity(kajianIntent);
             });
         }

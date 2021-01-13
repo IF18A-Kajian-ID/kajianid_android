@@ -103,7 +103,10 @@ public class MosqueListAdapter extends RecyclerView.Adapter<MosqueListAdapter.Mo
                                 Uri.parse(mosque.getLatLng() + "?q=" + mosque.getLatLng() + "(" + mosque.getMosqueName() + ")")
                         );
                         mapIntent.setPackage("com.google.android.apps.maps");
-                        binding.getRoot().getContext().startActivity(mapIntent);
+                        if (mapIntent.resolveActivity(binding.getRoot().getContext().getPackageManager()) != null)
+                            binding.getRoot().getContext().startActivity(mapIntent);
+                        else
+                            Toast.makeText(binding.getRoot().getContext(), "Aplikasi com.google.android.apps.maps tidak ada", Toast.LENGTH_SHORT).show();
                     })
                     .setNegativeButton(R.string.delete, (a, b) -> new AlertDialog.Builder(binding.getRoot().getContext())
                             .setMessage(binding.getRoot().getContext().getString(R.string.delete_mosque_confirm) + mosque.getMosqueName() + "?")

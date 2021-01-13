@@ -13,21 +13,23 @@ import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.kajianid.android.R
 import com.kajianid.android.data.Kajian
-import com.kajianid.android.databases.DatabaseContract
-import com.kajianid.android.databases.DbKajianHelper
-import com.kajianid.android.databases.MappingHelper
+import com.kajianid.android.databases.kajian.DatabaseContract
+import com.kajianid.android.databases.kajian.DbKajianHelper
+import com.kajianid.android.databases.kajian.MappingHelper
 import com.kajianid.android.databinding.ActivityShowKajianBinding
+import com.kajianid.android.databinding.ContentShowKajianBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.*
 
-class ActivityShowKajianSQL:AppCompatActivity() {
+class ShowKajianSQLActivity:AppCompatActivity() {
     private lateinit var kajian: Kajian
     private var remindered = false
     private lateinit var dbKajianHelper: DbKajianHelper
-    private lateinit var binding: ActivityShowKajianBinding
+    private lateinit var binding1: ActivityShowKajianBinding
+    private lateinit var binding2: ContentShowKajianBinding
 
     companion object{
         const val EXTRA_PARCEL_KAJIAN = "extra_parcel_kajian"
@@ -36,10 +38,11 @@ class ActivityShowKajianSQL:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_kajian)
-        binding = ActivityShowKajianBinding.inflate(layoutInflater)
+        binding1 = ActivityShowKajianBinding.inflate(layoutInflater)
+        binding2 = ContentShowKajianBinding.inflate(layoutInflater)
 
-        binding.progressMessage.visibility = View.GONE
-        binding.errorMessage.visibility = View.GONE
+        binding1.progressMessage.visibility = View.GONE
+        binding1.errorMessage.visibility = View.GONE
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -48,29 +51,29 @@ class ActivityShowKajianSQL:AppCompatActivity() {
 
         val bundle = intent.extras!!
         kajian = bundle.getParcelable(EXTRA_PARCEL_KAJIAN)!!
-        binding.contentShowKajian.tvKajianTitle.text = kajian.title
-        binding.contentShowKajian.tvMosqueAddress.text = kajian.mosque
-        binding.contentShowKajian.tvUstadzName.text = kajian.ustadzName
+        binding2.tvKajianTitle.text = kajian.title
+        binding2.tvMosqueAddress.text = kajian.mosque
+        binding2.tvUstadzName.text = kajian.ustadzName
         val dateAnnounce = resources.getString(R.string.timestamp_announce) + " " + kajian.dateAnnounce
         val dateDue = resources.getString(R.string.timestamp_due) + " " + kajian.date
-        binding.contentShowKajian.tvTimestampAnnounce.text = dateAnnounce
-        binding.contentShowKajian.tvTimestampDue.text = dateDue
-        binding.contentShowKajian.tvDescription.text = kajian.description
+        binding2.tvTimestampAnnounce.text = dateAnnounce
+        binding2.tvTimestampDue.text = dateDue
+        binding2.tvDescription.text = kajian.description
         Glide.with(this)
                 .load(kajian.imgResource)
-                .into(binding.contentShowKajian.imgThumbnail)
+                .into(binding2.imgThumbnail)
 
         if (kajian.place == "Di Tempat") {
-            binding.contentShowKajian.btnPlay.visibility = View.GONE
-            binding.contentShowKajian.tvCategory.text = kajian.place.toString()
-            binding.contentShowKajian.tvMosqueAddress.text = kajian.address
+            binding2.btnPlay.visibility = View.GONE
+            binding2.tvCategory.text = kajian.place.toString()
+            binding2.tvMosqueAddress.text = kajian.address
         } else {
-            binding.contentShowKajian.btnPlay.visibility = View.VISIBLE
+            binding2.btnPlay.visibility = View.VISIBLE
             val category = kajian.place.toString().toUpperCase(Locale.ROOT) + " - Courtesy of YouTube"
-            binding.contentShowKajian.tvCategory.text = category
-            binding.contentShowKajian.tvMosqueAddress.text = kajian.mosque
+            binding2.tvCategory.text = category
+            binding2.tvMosqueAddress.text = kajian.mosque
             val uri = kajian.youtubelink.toString()
-            binding.contentShowKajian.btnPlay.setOnClickListener {
+            binding2.btnPlay.setOnClickListener {
                 val i = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
                 startActivity(i)
             }
@@ -86,14 +89,14 @@ class ActivityShowKajianSQL:AppCompatActivity() {
             val isReminder  = deferredKajian.await()
             if (isReminder.size == 0){
                 remindered = false
-                binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_none_24)
+                binding1.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_none_24)
             }else{
                 remindered = true
-                binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_active_24)
+                binding1.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_active_24)
             }
         }
 
-        binding.fabreminder.setOnClickListener{
+        binding1.fabreminder.setOnClickListener{
             if (remindered){
                 val alert = AlertDialog.Builder(this)
                 alert.setTitle(resources.getString(R.string.sure))
@@ -101,7 +104,7 @@ class ActivityShowKajianSQL:AppCompatActivity() {
                 alert.setPositiveButton(resources.getString(R.string.yes)) { _, _ ->
                     kajian.id?.let { it1 -> dbKajianHelper.deleteById(it1) }
                     remindered = false
-                    binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_none_24)
+                    binding1.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_none_24)
                     Toast.makeText(this, "Pengingat Telah di NonAtifkan",Toast.LENGTH_LONG).show()
                     finish()
                 }
@@ -124,13 +127,13 @@ class ActivityShowKajianSQL:AppCompatActivity() {
                 values.put(DatabaseContract.KajianColumns.DATE_DUE, kajian.date)
                 dbKajianHelper.insert(values)
                 remindered = true
-                binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_active_24)
+                binding1.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_active_24)
                 Toast.makeText(this, "Pengingat Telah di Aktifkan", Toast.LENGTH_LONG).show()
             }
         }
 
-        binding.pullToRefresh.setOnRefreshListener {
-            binding.pullToRefresh.isRefreshing = false
+        binding1.pullToRefresh.setOnRefreshListener {
+            binding1.pullToRefresh.isRefreshing = false
         }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

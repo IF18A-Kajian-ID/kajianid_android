@@ -15,41 +15,28 @@
 
         <TextView
             android:id="@+id/tvMosqueName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:text="@string/example_mosque"
-            android:textColor="?android:textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imgNext"
+            android:textColor="?android:textColorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvMosqueAddress"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="4"
             android:text="@string/example_address"
-            app:layout_constraintEnd_toStartOf="@+id/imgNext"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMosqueName" />
-
-        <ImageView
-            android:id="@+id/imgNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/next"
-            android:src="@drawable/ic_baseline_navigate_next_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

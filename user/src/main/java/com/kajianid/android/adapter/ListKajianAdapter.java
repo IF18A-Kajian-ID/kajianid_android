@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.kajianid.android.R;
-import com.kajianid.android.activities.ActivityShowKajian;
+import com.kajianid.android.activities.ShowKajianActivity;
 import com.kajianid.android.data.Kajian;
 import com.kajianid.android.databinding.ListKajianBinding;
 
@@ -80,8 +80,8 @@ public class ListKajianAdapter extends RecyclerView.Adapter<ListKajianAdapter.My
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent KajianIntent = new Intent(binding.getRoot().getContext(), ActivityShowKajian.class);
-                    KajianIntent.putExtra(ActivityShowKajian.EXTRA_KAJIAN_ID, kajian.getId());
+                    Intent KajianIntent = new Intent(binding.getRoot().getContext(), ShowKajianActivity.class);
+                    KajianIntent.putExtra(ShowKajianActivity.EXTRA_KAJIAN_ID, kajian.getId());
                     binding.getRoot().getContext().startActivity(KajianIntent);
                 }
             });

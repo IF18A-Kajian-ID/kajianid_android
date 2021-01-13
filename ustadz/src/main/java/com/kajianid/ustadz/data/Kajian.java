@@ -5,6 +5,28 @@ import android.os.Parcelable;
 
 public class Kajian implements Parcelable {
 
+    public static final Creator<Kajian> CREATOR = new Creator<Kajian>() {
+        @Override
+        public Kajian createFromParcel(Parcel in) {
+            return new Kajian(in);
+        }
+
+        @Override
+        public Kajian[] newArray(int size) {
+            return new Kajian[size];
+        }
+    };
+    private String id;
+    private String title;
+    private String mosqueId;
+    private String mosqueName;
+    private String place;
+    private String address;
+    private String date;
+    private String description;
+    private String imgResource;
+    private String ytLink;
+
     public Kajian() {
 
     }
@@ -21,18 +43,6 @@ public class Kajian implements Parcelable {
         imgResource = in.readString();
         ytLink = in.readString();
     }
-
-    public static final Creator<Kajian> CREATOR = new Creator<Kajian>() {
-        @Override
-        public Kajian createFromParcel(Parcel in) {
-            return new Kajian(in);
-        }
-
-        @Override
-        public Kajian[] newArray(int size) {
-            return new Kajian[size];
-        }
-    };
 
     public String getId() {
         return id;
@@ -113,17 +123,6 @@ public class Kajian implements Parcelable {
     public void setYtLink(String ytLink) {
         this.ytLink = ytLink;
     }
-
-    private String id;
-    private String title;
-    private String mosqueId;
-    private String mosqueName;
-    private String place;
-    private String address;
-    private String date;
-    private String description;
-    private String imgResource;
-    private String ytLink;
 
     @Override
     public int describeContents() {

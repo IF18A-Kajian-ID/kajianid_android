@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kajianid.ustadz.R
@@ -25,7 +26,7 @@ import java.util.*
 
 class ShowKajianActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityShowKajianBinding
+    private var binding: ActivityShowKajianBinding? = null
 
     private lateinit var showKajianViewModel: ShowKajianViewModel
     private var kajian: Kajian = Kajian()
@@ -40,13 +41,13 @@ class ShowKajianActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityShowKajianBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
 
-        binding.svKajian.visibility = View.GONE
-        binding.progressMessage.visibility = View.VISIBLE
-        binding.errorMessage.visibility = View.GONE
+        binding?.svKajian?.visibility = View.GONE
+        binding?.progressMessage?.visibility = View.VISIBLE
+        binding?.errorMessage?.visibility = View.GONE
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding?.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = resources.getString(R.string.view_kajian)
 
@@ -58,8 +59,8 @@ class ShowKajianActivity : AppCompatActivity() {
                     .get(ShowKajianViewModel::class.java)
             showKajianViewModel.kajian.observe(this, {
                 if (it["status"] == true) {
-                    binding.progressMessage.visibility = View.GONE
-                    binding.errorMessage.visibility = View.GONE
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.errorMessage?.visibility = View.GONE
 
                     val title = it["title"].toString()
                     val ustadzName = resources.getString(R.string.by) + " " + it["ustadz_name"].toString()
@@ -80,23 +81,23 @@ class ShowKajianActivity : AppCompatActivity() {
                     kajian.imgResource = it["img_resource"].toString()
                     kajian.date = it["date_due_unformatted"].toString()
 
-                    binding.contentShowKajian.tvKajianTitle.text = title
-                    binding.contentShowKajian.tvUstadzName.text = ustadzName
-                    binding.contentShowKajian.tvDescription.text = description
-                    binding.contentShowKajian.tvTimestampAnnounce.text = dateAnnounce
-                    binding.contentShowKajian.tvTimestampDue.text = dateDue
+                    binding?.contentShowKajian?.tvKajianTitle?.text = title
+                    binding?.contentShowKajian?.tvUstadzName?.text = ustadzName
+                    binding?.contentShowKajian?.tvDescription?.text = description
+                    binding?.contentShowKajian?.tvTimestampAnnounce?.text = dateAnnounce
+                    binding?.contentShowKajian?.tvTimestampDue?.text = dateDue
 
                     if (it["category"] == "Di Tempat") {
-                        binding.contentShowKajian.btnPlay.visibility = View.GONE
-                        binding.contentShowKajian.tvCategory.text = it["category"].toString()
-                        binding.contentShowKajian.tvMosqueAddress.text = address
+                        binding?.contentShowKajian?.btnPlay?.visibility = View.GONE
+                        binding?.contentShowKajian?.tvCategory?.text = it["category"].toString()
+                        binding?.contentShowKajian?.tvMosqueAddress?.text = address
                     } else {
-                        binding.contentShowKajian.btnPlay.visibility = View.VISIBLE
+                        binding?.contentShowKajian?.btnPlay?.visibility = View.VISIBLE
                         val category = it["category"].toString().toUpperCase(Locale.ROOT) + " - Courtesy of YouTube"
-                        binding.contentShowKajian.tvCategory.text = category
-                        binding.contentShowKajian.tvMosqueAddress.text = mosqueName
+                        binding?.contentShowKajian?.tvCategory?.text = category
+                        binding?.contentShowKajian?.tvMosqueAddress?.text = mosqueName
                         val uri = it["youtube_link"].toString()
-                        binding.contentShowKajian.btnPlay.setOnClickListener {
+                        binding?.contentShowKajian?.btnPlay?.setOnClickListener {
                             val i = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
                             startActivity(i)
                         }
@@ -105,47 +106,47 @@ class ShowKajianActivity : AppCompatActivity() {
                     if (it["img_resource"] != null) {
                         Glide.with(this)
                                 .load(it["img_resource"].toString())
-                                .into(binding.contentShowKajian.imgThumbnail)
+                                .into(binding?.contentShowKajian?.imgThumbnail!!)
                     } else {
-                        binding.contentShowKajian.imgThumbnail.visibility = View.GONE
-                        binding.contentShowKajian.btnPlay.visibility = View.GONE
+                        binding?.contentShowKajian?.imgThumbnail?.visibility = View.GONE
+                        binding?.contentShowKajian?.btnPlay?.visibility = View.GONE
                     }
-                    binding.svKajian.visibility = View.VISIBLE
+                    binding?.svKajian?.visibility = View.VISIBLE
                 } else {
-                    binding.progressMessage.visibility = View.GONE
-                    binding.errorMessage.visibility = View.VISIBLE
+                    binding?.progressMessage?.visibility = View.GONE
+                    binding?.errorMessage?.visibility = View.VISIBLE
                     val errorMessage = """
                         Error!
                         [${it["code"]}]: ${it["message"]}
                     """.trimIndent()
-                    binding.tvErrorMessage.text = errorMessage
+                    binding?.tvErrorMessage?.text = errorMessage
                 }
             })
             showKajianViewModel.setKajianAsync(this, id)
 
-            binding.pullToRefresh.setOnRefreshListener {
+            binding?.pullToRefresh?.setOnRefreshListener {
                 refreshData()
             }
 
-            binding.btnRefresh.setOnClickListener {
+            binding?.btnRefresh?.setOnClickListener {
                 refreshData()
             }
         }
     }
 
     private fun refreshData() {
-        binding.pullToRefresh.isRefreshing = false
-        binding.svKajian.visibility = View.GONE
-        binding.progressMessage.visibility = View.VISIBLE
-        binding.errorMessage.visibility = View.GONE
+        binding?.pullToRefresh?.isRefreshing = false
+        binding?.svKajian?.visibility = View.GONE
+        binding?.progressMessage?.visibility = View.VISIBLE
+        binding?.errorMessage?.visibility = View.GONE
         GlobalScope.launch(Dispatchers.Main) {
             val deferredKajian = async(Dispatchers.IO) {
                 showKajianViewModel.setKajian(applicationContext, id)
             }
             val it = deferredKajian.await()
             if (it["status"] == true) {
-                binding.progressMessage.visibility = View.GONE
-                binding.errorMessage.visibility = View.GONE
+                binding?.progressMessage?.visibility = View.GONE
+                binding?.errorMessage?.visibility = View.GONE
                 val title = it["title"].toString()
                 val ustadzName = resources.getString(R.string.by) + " " + it["ustadz_name"].toString()
                 val mosqueName = it["mosque_name"].toString()
@@ -166,23 +167,23 @@ class ShowKajianActivity : AppCompatActivity() {
                 kajian.imgResource = it["img_resource"].toString()
                 kajian.date = it["date_due_unformatted"].toString()
 
-                binding.contentShowKajian.tvKajianTitle.text = title
-                binding.contentShowKajian.tvUstadzName.text = ustadzName
-                binding.contentShowKajian.tvDescription.text = description
-                binding.contentShowKajian.tvTimestampAnnounce.text = dateAnnounce
-                binding.contentShowKajian.tvTimestampDue.text = dateDue
+                binding?.contentShowKajian?.tvKajianTitle?.text = title
+                binding?.contentShowKajian?.tvUstadzName?.text = ustadzName
+                binding?.contentShowKajian?.tvDescription?.text = description
+                binding?.contentShowKajian?.tvTimestampAnnounce?.text = dateAnnounce
+                binding?.contentShowKajian?.tvTimestampDue?.text = dateDue
 
                 if (it["category"] == "Di Tempat") {
-                    binding.contentShowKajian.btnPlay.visibility = View.GONE
-                    binding.contentShowKajian.tvCategory.text = it["category"].toString()
-                    binding.contentShowKajian.tvMosqueAddress.text = address
+                    binding?.contentShowKajian?.btnPlay?.visibility = View.GONE
+                    binding?.contentShowKajian?.tvCategory?.text = it["category"].toString()
+                    binding?.contentShowKajian?.tvMosqueAddress?.text = address
                 } else {
-                    binding.contentShowKajian.btnPlay.visibility = View.VISIBLE
+                    binding?.contentShowKajian?.btnPlay?.visibility = View.VISIBLE
                     val category = it["category"].toString().toUpperCase(Locale.ROOT) + " - Courtesy of YouTube"
-                    binding.contentShowKajian.tvCategory.text = category
-                    binding.contentShowKajian.tvMosqueAddress.text = mosqueName
+                    binding?.contentShowKajian?.tvCategory?.text = category
+                    binding?.contentShowKajian?.tvMosqueAddress?.text = mosqueName
                     val uri = it["youtube_link"].toString()
-                    binding.contentShowKajian.btnPlay.setOnClickListener {
+                    binding?.contentShowKajian?.btnPlay?.setOnClickListener {
                         val i = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
                         startActivity(i)
                     }
@@ -191,20 +192,20 @@ class ShowKajianActivity : AppCompatActivity() {
                 if (it["img_resource"] != null) {
                     Glide.with(applicationContext)
                             .load(it["img_resource"].toString())
-                            .into(binding.contentShowKajian.imgThumbnail)
+                            .into(binding?.contentShowKajian?.imgThumbnail!!)
                 } else {
-                    binding.contentShowKajian.imgThumbnail.visibility = View.GONE
-                    binding.contentShowKajian.btnPlay.visibility = View.GONE
+                    binding?.contentShowKajian?.imgThumbnail?.visibility = View.GONE
+                    binding?.contentShowKajian?.btnPlay?.visibility = View.GONE
                 }
-                binding.svKajian.visibility = View.VISIBLE
+                binding?.svKajian?.visibility = View.VISIBLE
             } else {
-                binding.progressMessage.visibility = View.GONE
-                binding.errorMessage.visibility = View.VISIBLE
+                binding?.progressMessage?.visibility = View.GONE
+                binding?.errorMessage?.visibility = View.VISIBLE
                 val errorMessage = """
                         Error!
                         [${it["code"]}]: ${it["message"]}
                     """.trimIndent()
-                binding.tvErrorMessage.text = errorMessage
+                binding?.tvErrorMessage?.text = errorMessage
             }
         }
     }
@@ -253,6 +254,25 @@ class ShowKajianActivity : AppCompatActivity() {
                         .setCancelable(false)
                 val alertDialog = alert.create()
                 alertDialog.show()
+            }
+            R.id.menuShare -> {
+                val mimeType = "text/plain"
+                ShareCompat.IntentBuilder.from(this).apply {
+                    setType(mimeType)
+                    setChooserTitle("Bagikan kajian ini sekarang!")
+                    setText("""
+Kajian: ${binding?.contentShowKajian?.tvKajianTitle?.text}
+Waktu Pelaksanaan: ${binding?.contentShowKajian?.tvTimestampDue?.text}
+
+Kajian ini bersifat ${kajian.place}
+
+Deskripsi:
+${kajian.description}
+
+Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
+                    """.trimIndent())
+                    startChooser()
+                }
             }
         }
         return true

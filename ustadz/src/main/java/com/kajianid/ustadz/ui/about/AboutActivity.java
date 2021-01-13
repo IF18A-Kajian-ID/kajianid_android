@@ -1,8 +1,5 @@
 package com.kajianid.ustadz.ui.about;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
@@ -10,8 +7,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.kajianid.ustadz.R;
 import com.kajianid.ustadz.databinding.ActivityAboutBinding;
+
+import java.util.Objects;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -28,7 +30,7 @@ public class AboutActivity extends AppCompatActivity {
         binding.tabs.setupWithViewPager(binding.vpAbout);
 
         setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle(getString(R.string.about));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.about));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -56,7 +58,7 @@ public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        binding = null;
         super.onDestroy();
+        binding = null;
     }
 }

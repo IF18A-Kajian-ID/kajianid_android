@@ -5,15 +5,6 @@ import android.os.Parcelable;
 
 public class Credential implements Parcelable {
 
-    public Credential() {
-        // empty public constructor
-    }
-
-    protected Credential(Parcel in) {
-        username = in.readString();
-        password = in.readString();
-    }
-
     public static final Creator<Credential> CREATOR = new Creator<Credential>() {
         @Override
         public Credential createFromParcel(Parcel in) {
@@ -25,6 +16,17 @@ public class Credential implements Parcelable {
             return new Credential[size];
         }
     };
+    String username = null;
+    String password = null;
+
+    public Credential() {
+        // empty public constructor
+    }
+
+    protected Credential(Parcel in) {
+        username = in.readString();
+        password = in.readString();
+    }
 
     public String getUsername() {
         return username;
@@ -41,9 +43,6 @@ public class Credential implements Parcelable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    String username = null;
-    String password = null;
 
     @Override
     public int describeContents() {
