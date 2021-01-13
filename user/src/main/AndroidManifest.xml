@@ -10,13 +10,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KajianID">
-        <activity android:name=".activities.ActivityAboutMaratunSolehah"></activity>
         <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.AboutActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -26,7 +26,7 @@
         <activity android:name=".activities.ArticleIslamiActivity" />
         <activity android:name=".activities.ShowKajianActivity" />
         <activity android:name=".activities.KajianActivity" />
-        <activity android:name=".activities.AboutActivity">
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
