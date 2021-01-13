@@ -1,7 +1,5 @@
 package com.kajianid.android.activities
 
-import androidx.appcompat.app.AppCompatActivity
-import com.kajianid.android.data.Kajian
 import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
@@ -10,11 +8,12 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kajianid.android.R
+import com.kajianid.android.data.Kajian
 import com.kajianid.android.databases.kajian.DatabaseContract
 import com.kajianid.android.databases.kajian.DbKajianHelper
 import com.kajianid.android.databases.kajian.MappingHelper
@@ -62,7 +61,7 @@ class ShowKajianActivity : AppCompatActivity() {
         // MVVM Show Kajian
         showKajianViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
                 .get(ShowKajianViewModel::class.java)
-        showKajianViewModel.getKajian().observe(this, Observer {
+        showKajianViewModel.kajian.observe(this, {
             if (it["status"] == true) {
                 binding1.progressMessage.visibility = View.GONE
                 binding1.errorMessage.visibility = View.GONE

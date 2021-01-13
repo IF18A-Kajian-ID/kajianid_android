@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kajianid.android.R
+import com.kajianid.android.data.Article
 import com.kajianid.android.databinding.ActivityReadArticleBinding
 import com.kajianid.android.viewmodels.ReadArticleViewModel
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +27,7 @@ class ReadArticleActivity : AppCompatActivity() {
     private var isError: Boolean = false
     private var downloaded =  false
     private lateinit var dbArticleHelper: DbArticleHelper
-    private lateinit var article:Article
+    private lateinit var article: Article
     private lateinit var binding: ActivityReadArticleBinding
 
     companion object {

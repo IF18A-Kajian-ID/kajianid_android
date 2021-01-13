@@ -9,13 +9,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.kajianid.android.R
+import com.kajianid.android.data.Article
 import com.kajianid.android.databinding.ActivityReadArticleBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class ReadArticleSQLActivity: AppCompatActivity{
+class ReadArticleSQLActivity: AppCompatActivity() {
     private lateinit var article: Article
     private var downloaded = false
     private lateinit var dbArticleHelper: DbArticleHelper
