@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 import com.kajianid.android.databases.kajian.MappingHelper
 import com.kajianid.android.R
 import com.kajianid.android.data.Article
+import com.kajianid.android.databases.DatabaseContract
+import com.kajianid.android.databases.article.DbArticleHelper
 import com.kajianid.android.databinding.ActivityReadArticleBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -32,25 +34,25 @@ class ReadArticleSQLActivity: AppCompatActivity() {
         binding = ActivityReadArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.progressBar.visibility = View.VISIBLE
-        progressMessage.visibility = View.GONE
-        errorMessage.visibility = View.GONE
-        imgLike.visibility = View.GONE
-        tvLikeCount.visibility = View.GONE
+        binding.progressMessage.visibility = View.GONE
+        binding.errorMessage.visibility = View.GONE
+        binding.ContentReadArticle.imgLike.visibility = View.GONE
+        binding.ContentReadArticle.tvLikeCount.visibility = View.GONE
 
         val bundle = intent.extras!!
         article = bundle.getParcelable(EXTRA_PARCEL_ARTICLES)!!
-        tvArticleTitle.text = article.title
-        tvPostDate.text = article.post_date
+        binding.ContentReadArticle.tvArticleTitle.text = article.title
+        binding.ContentReadArticle.tvPostDate.text = article.postDate
         val ustadzName = resources.getString(R.string.by) + " " + article.ustadzName
-        tv_nama_Ustad.text = ustadzName
-        tvPostContent.text = article.content
+        binding.ContentReadArticle.tvNamaUstad.text = ustadzName
+        binding.ContentReadArticle.tvPostContent.text = article.content
 
         if (article.hasImg == "true") {
             Glide.with(this)
                     .load(article.imgUrl) //masih bug
-                    .into(imgArticle)
+                    .into(binding.ContentReadArticle.imgArticle)
         } else {
-            imgArticle.visibility = View.GONE
+            binding.ContentReadArticle.imgArticle.visibility = View.GONE
         }
 
         setSupportActionBar(binding.toolbar)
@@ -68,15 +70,15 @@ class ReadArticleSQLActivity: AppCompatActivity() {
             val isDownload = deferredArticle.await()
             if (isDownload.size == 0) {
                 downloaded = false
-                fabDownload.setImageResource(R.drawable.ic_baseline_assignment_returned_24)
+                binding.fabDownload.setImageResource(R.drawable.ic_baseline_assignment_returned_24)
             } else {
                 downloaded = true
-                fabDownload.setImageResource(R.drawable.ic_baseline_assignment_turned_in_24)
+                binding.fabDownload.setImageResource(R.drawable.ic_baseline_assignment_turned_in_24)
             }
 
         }
 
-        fabDownload.setOnClickListener {
+        binding.fabDownload.setOnClickListener {
             if (downloaded) {
                 val alert = AlertDialog.Builder(this)
                 alert.setTitle(resources.getString(R.string.sure))
@@ -84,7 +86,7 @@ class ReadArticleSQLActivity: AppCompatActivity() {
                 alert.setPositiveButton(resources.getString(R.string.yes)) { _, _ ->
                     article.id?.let { it1 -> dbArticleHelper.deleteById(it1) }
                     downloaded = false
-                    fabDownload.setImageResource(R.drawable.ic_baseline_assignment_returned_24)
+                    binding.fabDownload.setImageResource(R.drawable.ic_baseline_assignment_returned_24)
                     Toast.makeText(this, "Artikel telah dihapus!", Toast.LENGTH_LONG).show()
                     finish()
                 }
@@ -96,17 +98,17 @@ class ReadArticleSQLActivity: AppCompatActivity() {
                 val values = ContentValues()
                 values.put(DatabaseContract.ArticleColums.ID, article.id)
                 values.put(DatabaseContract.ArticleColums.TITLE, article.title)
-                values.put(DatabaseContract.ArticleColums.POST_DATE, article.post_date)
+                values.put(DatabaseContract.ArticleColums.POST_DATE, article.postDate)
                 values.put(DatabaseContract.ArticleColums.CONTENT, article.content)
                 values.put(DatabaseContract.ArticleColums.HAS_IMG, article.hasImg)
                 values.put(DatabaseContract.ArticleColums.USTADZ_NAME, article.ustadzName)
                 values.put(DatabaseContract.ArticleColums.IMGURL, article.imgUrl)
                 dbArticleHelper.insert(values)
                 downloaded = true
-                fabDownload.setImageResource(R.drawable.ic_baseline_assignment_turned_in_24)
+                binding.fabDownload.setImageResource(R.drawable.ic_baseline_assignment_turned_in_24)
                 Toast.makeText(this, "Artikel Berhasil Diunduh", Toast.LENGTH_LONG).show()
             }
-            pullToRefresh.setOnRefreshListener { pullToRefresh.isRefreshing = false }
+            binding.pullToRefresh.setOnRefreshListener { binding.pullToRefresh.isRefreshing = false }
         }
     }
 
