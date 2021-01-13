@@ -1,4 +1,4 @@
-package com.kajianid.android.activities;
+package com.kajianid.android.utils;
 
 import androidx.annotation.DrawableRes;
 
@@ -10,7 +10,7 @@ public class DeveloperData {
             R.drawable.dwichan,
             R.drawable.maratun,
             R.drawable.fendi,
-            R.drawable.diyah, // Diyah Primasari
+            R.drawable.diyah,
             R.drawable.bayu
     };
 

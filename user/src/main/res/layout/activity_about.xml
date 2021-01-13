@@ -7,58 +7,84 @@
     android:orientation="vertical"
     tools:context=".activities.AboutActivity">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/dwichan" />
-
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nama: Dwi Candra Permana" />
+            android:layout_height="wrap_content" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="NIM: 18.11.0004" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tugas: Membuat Aplikasi untuk Sisi Ustadz dan memimpin tim projek" />
-        
-    </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rlAppName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="8dp">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/bayu" />
+            android:id="@+id/appIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/icon" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama: Muhammad Rizky Bayu Pratama" />
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/appIcon"
+            android:text="@string/app_name"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/appVer"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NIM: 18.11.0258" />
+            android:layout_below="@+id/appName"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/appIcon"
+            android:text="@string/app_version"
+            android:textSize="14sp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tugas: Membuat Java untuk Sisi user pada bagian Article" />
+            android:layout_below="@+id/appVer"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/appIcon"
+            android:text="@string/copyright"
+            android:textSize="14sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlAppName"
+        app:tabIndicatorAnimationDuration="50"
+        app:tabIndicatorColor="#001FBD"
+        app:tabSelectedTextColor="#001FBD" />
+    <!--    app:tabIndicatorAnimationDuration="50"-->
+    <!--    app:tabIndicatorColor="#001FBD"-->
+    <!--    app:tabSelectedTextColor="#001FBD"-->
+    <!--    android:background="?android:attr/colorPrimary"-->
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpAbout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
