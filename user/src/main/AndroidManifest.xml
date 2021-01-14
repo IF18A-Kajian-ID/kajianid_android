@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.kajianid.android">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,17 +16,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KajianID">
-        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.ArticleIslamiActivity" />
+        <activity android:name=".activities.KajianActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.MapsResultActivity" />
+        <activity android:name=".activities.MosqueLocationActivity" />
+        <activity android:name=".activities.ReadArticleActivity" />
+        <activity android:name=".activities.ReadArticleSQLActivity" />
+        <activity android:name=".activities.ShowKajianActivity" />
+        <activity android:name=".activities.ShowKajianSQLActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".activities.ListArticleActivity" />
-        <activity android:name=".activities.ArticleIslamiActivity" />
-        <activity android:name=".activities.ShowKajianActivity" />
-        <activity android:name=".activities.KajianActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
