@@ -60,12 +60,12 @@ public class ArticleViewModel extends ViewModel {
 
                     Log.d("Isi", result);
 
-                    for (int i = 0; i <= list.length(); i++) {
+                    for (int i = 0; i < list.length(); i++) {
                         JSONObject articleJSONObject = list.getJSONObject(i);
                         Article article = new Article();
 
                         article.setId(articleJSONObject.getString("id"));
-                        article.setTitle(articleJSONObject.getString("tittle"));
+                        article.setTitle(articleJSONObject.getString("title"));
                         article.setContent(articleJSONObject.getString("content"));
                         article.setUstadzName(articleJSONObject.getString("ustadz_name"));
                         article.setHasImg(articleJSONObject.getString("has_img"));
@@ -122,12 +122,12 @@ public class ArticleViewModel extends ViewModel {
 
                     Log.d("Isi", result);
 
-                    for (int i = 0; i <= list.length(); i++) {
+                    for (int i = 0; i < list.length(); i++) {
                         JSONObject articleJSONObject = list.getJSONObject(i);
                         Article article = new Article();
 
                         article.setId(articleJSONObject.getString("id"));
-                        article.setTitle(articleJSONObject.getString("tittle"));
+                        article.setTitle(articleJSONObject.getString("title"));
                         article.setContent(articleJSONObject.getString("content"));
                         article.setUstadzName(articleJSONObject.getString("ustadz_name"));
                         article.setHasImg(articleJSONObject.getString("has_img"));

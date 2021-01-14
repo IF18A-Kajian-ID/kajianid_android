@@ -63,7 +63,7 @@ public class ArticleSQLAdapter extends RecyclerView.Adapter<ArticleSQLAdapter.Ar
             binding.TVTanggal.setText(article.getPostDate());
             binding.TVUstadz.setText(article.getUstadzName());
 
-            if (article.getHasImg().equals("false")) {
+            if (article.getHasImg().equals("0")) {
                 binding.IJudul.setVisibility(View.GONE);
             } else {
                 Glide.with(binding.getRoot().getContext())
