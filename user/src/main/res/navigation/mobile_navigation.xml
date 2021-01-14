@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.kajianid.android.fragment.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <activity
+        android:id="@+id/nav_settings"
+        android:label="@string/menu_settings"
+        android:name="id.shoumhome.android.activity.SettingsActivity"
+        tools:layout="@layout/activity_settings"/>
+
+    <fragment
+        android:id="@+id/nav_downloaded_articles"
+        android:name="com.kajianid.android.fragment.DownloadedArticleFragment"
+        android:label="@string/menu_downloaded_articles"
+        tools:layout="@layout/fragment_downloaded_article" />
+
+    <fragment
+        android:id="@+id/nav_saved_kajian"
+        android:name="com.kajianid.android.fragment.SavedKajianFragment"
+        android:label="@string/menu_saved_kajian"
+        tools:layout="@layout/fragment_saved_kajian" />
+
+</navigation>

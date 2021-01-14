@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/atas"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,55 +47,5 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- translation = mindahin posisi objek berdasarkan X dan Y -->
-    <LinearLayout
-        android:translationY="-70dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/layout_user_btn_round_rec"
-        android:padding="20dp"
-        android:stretchColumns="*"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/atas">
-
-        <Button
-            android:id="@+id/btnAlarm"
-            android:layout_gravity="left"
-            android:layout_width="0dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight=".5"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_round_rec"
-            android:drawableTop="@drawable/ic_baseline_access_alarm_24"
-            android:text="Alarm"
-            tools:ignore="RtlHardcoded" />
-
-        <Button
-            android:layout_gravity="start"
-            android:layout_width="0dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight=".5"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_round_rec"
-            android:drawableTop="@drawable/ic_baseline_history_24"
-            android:text="Riwayat" />
-
-        <Button
-            android:layout_gravity="start"
-            android:layout_width="0dp"
-            android:layout_weight=".5"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_round_rec"
-            android:drawableTop="@drawable/ic_baseline_people_alt_24"
-            android:text="Profil" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

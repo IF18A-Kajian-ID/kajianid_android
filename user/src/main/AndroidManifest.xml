@@ -17,8 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KajianID">
 
-        <activity android:name=".activities.MainActivity" />
-
         <activity android:name=".activities.AboutActivity" />
         <activity android:name=".activities.ArticleIslamiActivity" />
         <activity android:name=".activities.KajianActivity" />
