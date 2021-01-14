@@ -62,14 +62,10 @@ public class ListKajianAdapter extends RecyclerView.Adapter<ListKajianAdapter.My
         }
 
         public void bind(Kajian kajian) {
-            if (Objects.equals(kajian.getPlace(), "Di Tempat")) {
-                if (kajian.getImgResource()!= null)
-                    Glide.with(binding.getRoot().getContext()).asBitmap().load(kajian.getImgResource()).into(binding.ImageJudul);
-                else
-                    Glide.with(binding.getRoot().getContext()).asBitmap().load(R.drawable.icon).into(binding.ImageJudul);
-            } else {
-                Glide.with(binding.getRoot().getContext()).asBitmap().load(kajian.getImgResource()).into(binding.ImageJudul);
-            }
+            Glide.with(binding.getRoot().getContext())
+                    .asBitmap()
+                    .load(kajian.getImgResource())
+                    .into(binding.ImageJudul);
 
             binding.TextViewJudul.setText(kajian.getTitle());
             binding.TextViewUstadz.setText(kajian.getUstadzName());

@@ -48,9 +48,7 @@ class ShowKajianActivity : AppCompatActivity() {
         val bundle = intent.extras
         id = bundle?.get(EXTRA_KAJIAN_ID).toString()
 
-
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Lihat Kajian"
 

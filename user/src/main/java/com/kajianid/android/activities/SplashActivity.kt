@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatDelegate
+import com.kajianid.android.R
 import com.kajianid.android.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -17,6 +18,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        binding?.version?.text = "Version ${getString(R.string.app_version)}"
 
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))

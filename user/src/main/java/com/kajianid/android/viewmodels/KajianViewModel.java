@@ -67,6 +67,7 @@ public class KajianViewModel extends ViewModel {
                         kajian.setId(kajianJSONObject.getString("id"));
                         kajian.setTitle(kajianJSONObject.getString("kajian_title"));
                         kajian.setUstadzName(kajianJSONObject.getString("ustadz_name"));
+                        kajian.setImgResource(kajianJSONObject.getString("img_resource"));
                         kajian.setPlace(kajianJSONObject.getString("place"));
                         kajian.setAddress(kajianJSONObject.getString("address"));
                         kajian.setMosque(kajianJSONObject.getString("mosque_name"));
@@ -116,17 +117,18 @@ public class KajianViewModel extends ViewModel {
                     Log.d("Isi", result);
 
                     for (int i = 0; i < list.length(); i++) {
-                        JSONObject articleJSONObject = list.getJSONObject(i);
+                        JSONObject kajianJSONObject = list.getJSONObject(i);
                         Kajian kajian = new Kajian();
 
-                        kajian.setId(articleJSONObject.getString("id"));
-                        kajian.setTitle(articleJSONObject.getString("kajian_title"));
-                        kajian.setUstadzName(articleJSONObject.getString("ustadz_name"));
-                        kajian.setPlace(articleJSONObject.getString("place"));
-                        kajian.setAddress(articleJSONObject.getString("address"));
-                        kajian.setMosque(articleJSONObject.getString("mosque_name"));
+                        kajian.setId(kajianJSONObject.getString("id"));
+                        kajian.setTitle(kajianJSONObject.getString("kajian_title"));
+                        kajian.setUstadzName(kajianJSONObject.getString("ustadz_name"));
+                        kajian.setImgResource(kajianJSONObject.getString("img_resource"));
+                        kajian.setPlace(kajianJSONObject.getString("place"));
+                        kajian.setAddress(kajianJSONObject.getString("address"));
+                        kajian.setMosque(kajianJSONObject.getString("mosque_name"));
 
-                        String date = articleJSONObject.getString("date_due");
+                        String date = kajianJSONObject.getString("date_due");
                         Date dateDue = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(date);
                         String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDue);
 

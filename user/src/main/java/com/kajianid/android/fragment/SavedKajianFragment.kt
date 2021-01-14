@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kajianid.android.R
 import com.kajianid.android.adapter.KajianSQLAdapter
 import com.kajianid.android.databases.kajian.DbKajianHelper
 import com.kajianid.android.databases.kajian.MappingHelper
@@ -23,7 +22,6 @@ class SavedKajianFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentSavedKajianBinding.inflate(layoutInflater)
 
         binding.rvKajian.layoutManager = LinearLayoutManager(context)
         binding.rvKajian.adapter = kajianSQLAdapter
@@ -57,9 +55,10 @@ class SavedKajianFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved_kajian, container, false)
+        binding = FragmentSavedKajianBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onResume() {

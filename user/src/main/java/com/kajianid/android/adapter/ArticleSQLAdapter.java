@@ -63,7 +63,7 @@ public class ArticleSQLAdapter extends RecyclerView.Adapter<ArticleSQLAdapter.Ar
             binding.TVTanggal.setText(article.getPostDate());
             binding.TVUstadz.setText(article.getUstadzName());
 
-            if (article.getHasImg().equals("0")) {
+            if (article.getHasImg().equals("0") || article.getHasImg().equals("false")) {
                 binding.IJudul.setVisibility(View.GONE);
             } else {
                 Glide.with(binding.getRoot().getContext())
@@ -74,7 +74,7 @@ public class ArticleSQLAdapter extends RecyclerView.Adapter<ArticleSQLAdapter.Ar
 
             binding.getRoot().setOnClickListener(view -> {
                 Intent artikelIntent = new Intent(binding.getRoot().getContext(), ReadArticleSQLActivity.class);
-                artikelIntent.putExtra(ReadArticleSQLActivity.EXTRA_PARCEL_ARTICLES, article.getId());
+                artikelIntent.putExtra(ReadArticleSQLActivity.EXTRA_PARCEL_ARTICLES, article);
                 binding.getRoot().getContext().startActivity(artikelIntent);
             });
         }

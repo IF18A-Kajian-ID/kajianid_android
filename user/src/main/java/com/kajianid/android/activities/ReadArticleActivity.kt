@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kajianid.android.databases.DatabaseContract
 import com.kajianid.android.databases.article.DbArticleHelper
-import com.kajianid.android.databases.kajian.MappingHelper
+import com.kajianid.android.databases.article.MappingHelper
 import com.kajianid.android.R
 import com.kajianid.android.data.Article
 import com.kajianid.android.databinding.ActivityReadArticleBinding
