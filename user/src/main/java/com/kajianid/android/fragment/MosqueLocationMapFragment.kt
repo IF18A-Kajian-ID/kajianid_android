@@ -1,4 +1,4 @@
-package com.kajianid.android.activities
+package com.kajianid.android.fragment
 
 import android.content.Context
 import android.location.Geocoder

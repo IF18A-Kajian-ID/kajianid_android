@@ -25,6 +25,9 @@ import com.kajianid.android.databinding.ActivityMainBinding;
 
 import java.util.Set;
 
+import static androidx.navigation.ui.NavigationUI.setupActionBarWithNavController;
+import static androidx.navigation.ui.NavigationUI.setupWithNavController;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         if (doubleBackToExitPressedOnce) super.onBackPressed();
 
         doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Tekan sekali lagi untuk keluar dari ShoumHome!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Tekan sekali lagi untuk keluar dari Kajian.ID!", Toast.LENGTH_SHORT).show();
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             doubleBackToExitPressedOnce = false;
         }, 2000);
@@ -59,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_saved_kajian)
                 .setDrawerLayout(drawerLayout)
                 .build();
-        NavigationUI.setupActionBarWithNavController(this, navController);
-        NavigationUI.setupWithNavController(binding.navMain, navController);
+        setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        setupWithNavController(binding.navMain, navController);
         View headerView = binding.navMain.getHeaderView(0);
         TextView txtUsername = headerView.findViewById(R.id.txtNamaUser2);
         TextView txtEmail = headerView.findViewById(R.id.txtEmail);
 
-        txtUsername.setText(Build.MODEL);
+        txtUsername.setText(Build.BRAND + " " + Build.MODEL);
         txtEmail.setText(Build.MANUFACTURER);
     }
 

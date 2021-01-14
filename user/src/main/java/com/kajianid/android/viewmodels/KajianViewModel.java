@@ -60,7 +60,7 @@ public class KajianViewModel extends ViewModel {
 
                     Log.d("Isi", result);
 
-                    for (int i = 0; i <= list.length(); i++) {
+                    for (int i = 0; i < list.length(); i++) {
                         JSONObject kajianJSONObject = list.getJSONObject(i);
                         Kajian kajian = new Kajian();
 
@@ -115,7 +115,7 @@ public class KajianViewModel extends ViewModel {
 
                     Log.d("Isi", result);
 
-                    for (int i = 0; i <= list.length(); i++) {
+                    for (int i = 0; i < list.length(); i++) {
                         JSONObject articleJSONObject = list.getJSONObject(i);
                         Kajian kajian = new Kajian();
 

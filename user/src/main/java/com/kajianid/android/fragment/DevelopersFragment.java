@@ -71,7 +71,7 @@ public class DevelopersFragment extends Fragment {
         binding.tvEmail.setText(DeveloperData.email[position]);
         binding.tvAddress.setText(DeveloperData.address[position]);
 
-        String githubUrl = "https://github.com" + DeveloperData.githubUsername[position];
+        String githubUrl = "https://github.com/" + DeveloperData.githubUsername[position];
         binding.btnVisit.setOnClickListener(itView -> {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(githubUrl));
