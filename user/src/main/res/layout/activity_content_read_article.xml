@@ -21,7 +21,7 @@
         android:id="@+id/imgArticle"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/nama_slogan"
+        android:src="@drawable/icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nama_Ustad" />

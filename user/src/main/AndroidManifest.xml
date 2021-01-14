@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KajianID">
+<<<<<<< Updated upstream
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.AboutActivity" />
 
@@ -27,6 +28,15 @@
         <activity android:name=".activities.ShowKajianActivity" />
         <activity android:name=".activities.KajianActivity" />
         <activity android:name=".activities.SplashActivity">
+=======
+        <activity android:name=".ReadArticleActivity" />
+        <activity android:name=".ListArticleActivity" />
+        <activity android:name=".ContentReadArticle" />
+        <activity android:name=".ArticleActivity" />
+        <activity android:name=".ShowKajianActivity" />
+        <activity android:name=".KajianActivity" />
+        <activity android:name=".MainActivity">
+>>>>>>> Stashed changes
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

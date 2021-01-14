@@ -97,6 +97,7 @@ public class ReadArticleViewModel extends ViewModel {
 
         return resultMap;
     }
+<<<<<<< Updated upstream
 
     public Map<String, Object> setArticleAsync(Context context, String id){
 
@@ -171,3 +172,5 @@ client.get(url, params, new AsyncHttpResponseHandler(){
         return mData;
     }
 }
+=======
+>>>>>>> Stashed changes
