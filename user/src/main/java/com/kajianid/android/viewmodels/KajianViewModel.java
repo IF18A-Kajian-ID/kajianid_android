@@ -31,7 +31,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class KajianViewModel extends ViewModel {
 
-    private MutableLiveData<ArrayList<Kajian>> listKajian;
+    private MutableLiveData<ArrayList<Kajian>> listKajian = new MutableLiveData<>();
 
     public String setKajian(Context context, String searchQuery) {
 
