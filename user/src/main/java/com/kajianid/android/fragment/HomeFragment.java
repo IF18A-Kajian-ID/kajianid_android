@@ -17,7 +17,7 @@ import com.kajianid.android.activities.KajianActivity;
 import com.kajianid.android.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
-    private DataSessionHandler session = null;
+
     private FragmentHomeBinding binding;
 
     public HomeFragment() {
@@ -40,9 +40,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        session = getActivity().getIntent().getParcelableExtra("session");
         binding.contentFragmentHome.txtNamaUser1.setText(
-                (session.getNama_lengkap().equals(null)) ? "" : session.getNama_lengkap()
+                "Hello word"
         );
         binding.btnArticle.setOnClickListener(it -> {
                     Intent i = new Intent(getContext(), ArticleIslamiActivity.class);
