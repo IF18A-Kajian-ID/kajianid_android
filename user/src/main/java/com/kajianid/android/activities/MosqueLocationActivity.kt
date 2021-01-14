@@ -1,11 +1,10 @@
 package com.kajianid.android.activities
 
-import android.R
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.kajianid.android.databinding.ActivityMosqueLocationBinding
-import com.kajianid.android.pager.MosqueLocationPagerAdapter
+import com.kajianid.android.pageradapter.MosqueLocationPagerAdapter
 
 class MosqueLocationActivity : AppCompatActivity() {
 
