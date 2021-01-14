@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.MapsResultActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat:"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="%tvAlamat%"
+            android:ellipsize="end"
+            android:textStyle="normal"
+            android:paddingBottom="5dp"
+            android:textSize="12sp"
+            android:maxLines="2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kode Pos: "
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvKodePos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="%tvKodePos%"
+            android:textStyle="normal"
+            android:paddingBottom="5dp"
+            android:textSize="12sp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lintang: "
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bujur: "
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvLintang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%tvLintang%"
+                    android:textStyle="normal"
+                    android:paddingBottom="5dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvBujur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%tvBujur%"
+                    android:textStyle="normal"
+                    android:paddingBottom="5dp"
+                    android:textSize="12sp" />
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/fragment_maps" />
+
+</LinearLayout>

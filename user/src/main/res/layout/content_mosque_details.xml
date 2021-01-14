@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mosqueDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:windowBackground"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="?android:actionBarSize">
+
+    <TextView
+        android:id="@+id/tvMosqueName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/example_mosque"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvMosqueAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMosqueName"
+        android:text="@string/example_about_address" />
+
+    <Button
+        android:id="@+id/btnGoogleMaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/tvMosqueAddress"
+        android:background="@drawable/bt_aksi"
+        android:text="@string/google_maps" />
+
+</RelativeLayout>
