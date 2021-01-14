@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.contentFragmentHome.txtNamaUser1.setText(
-                Build.BRAND + " " + Build.MODEL
+                Build.MANUFACTURER + " " + Build.MODEL
         );
         binding.btnArticle.setOnClickListener(it -> {
             Intent i = new Intent(getContext(), ArticleIslamiActivity.class);

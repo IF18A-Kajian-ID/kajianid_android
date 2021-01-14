@@ -4,12 +4,14 @@ import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ShareCompat
 import com.bumptech.glide.Glide
 import com.kajianid.android.R
 import com.kajianid.android.data.Kajian
@@ -133,10 +135,35 @@ class ShowKajianSQLActivity:AppCompatActivity() {
             binding.pullToRefresh.isRefreshing = false
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_article_kajian, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             android.R.id.home -> super.onBackPressed()
+            R.id.share -> {
+                val mimeType = "text/plain"
+                ShareCompat.IntentBuilder.from(this).apply {
+                    setType(mimeType)
+                    setChooserTitle("Bagikan kajian ini sekarang!")
+                    setText("""
+Kajian: ${binding.contentShowKajian.tvKajianTitle.text}
+Oleh: ${binding.contentShowKajian.tvUstadzName.text}
+Waktu Pelaksanaan: ${binding.contentShowKajian.tvTimestampDue.text}
 
+Kajian ini bersifat ${kajian.place}
+
+Deskripsi:
+${kajian.description}
+
+Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
+                    """.trimIndent())
+                    startChooser()
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }

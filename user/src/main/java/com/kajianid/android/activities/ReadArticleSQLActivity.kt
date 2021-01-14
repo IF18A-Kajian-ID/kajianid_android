@@ -2,11 +2,13 @@ package com.kajianid.android.activities
 
 import android.content.ContentValues
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import com.bumptech.glide.Glide
 import com.kajianid.android.databases.article.MappingHelper
 import com.kajianid.android.R
@@ -112,9 +114,32 @@ class ReadArticleSQLActivity: AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) super.onBackPressed()
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_article_kajian, menu)
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> super.onBackPressed()
+            R.id.share -> {
+                val mimeType = "text/plain"
+                ShareCompat.IntentBuilder.from(this).apply {
+                    setType(mimeType)
+                    setChooserTitle("Bagikan artikel ini sekarang!")
+                    setText("""
+*${binding.ContentReadArticle.tvArticleTitle.text}*
+_${binding.ContentReadArticle.tvNamaUstad.text} pada ${binding.ContentReadArticle.tvPostDate.text}_
+
+${binding.ContentReadArticle.tvPostContent.text}
+
+Informasi ini disebarkan melalui aplikasi ${getString(R.string.app_name)}.
+                    """.trimIndent())
+                    startChooser()
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
+
+}

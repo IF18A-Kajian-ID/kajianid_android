@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         TextView txtUsername = headerView.findViewById(R.id.txtNamaUser2);
         TextView txtEmail = headerView.findViewById(R.id.txtEmail);
 
-        txtUsername.setText(Build.BRAND + " " + Build.MODEL);
+        txtUsername.setText(Build.MODEL);
         txtEmail.setText(Build.MANUFACTURER);
     }
 

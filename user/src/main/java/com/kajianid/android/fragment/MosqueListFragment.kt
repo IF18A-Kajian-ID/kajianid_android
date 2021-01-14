@@ -79,11 +79,11 @@ class MosqueListFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_article_kajian_search, menu)
+        inflater.inflate(R.menu.menu_article_kajian, menu)
 
         // SearchView start
         val searchManager = context?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search)?.actionView as SearchView
+        val searchView = menu.findItem(R.id.share)?.actionView as SearchView
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
         searchView.queryHint = getString(R.string.search_mosque)
