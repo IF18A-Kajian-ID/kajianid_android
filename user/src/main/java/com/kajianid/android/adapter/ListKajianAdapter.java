@@ -49,7 +49,7 @@ public class ListKajianAdapter extends RecyclerView.Adapter<ListKajianAdapter.My
 
     @Override
     public int getItemCount() {
-        return mKajian == null? 0 : mKajian.size();
+        return mKajian.size();
     }
 
     static class MyHolder extends RecyclerView.ViewHolder{
