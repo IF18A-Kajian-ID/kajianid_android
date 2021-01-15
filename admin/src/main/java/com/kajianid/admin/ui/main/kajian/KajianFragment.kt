@@ -1,4 +1,4 @@
-package com.kajianid.ustadz.ui.main.kajian
+package com.kajianid.admin.ui.main.kajian
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kajianid.ustadz.databinding.FragmentKajianBinding
-import com.kajianid.admin.ui.kajian.AddUpdateKajianActivity
-import com.kajianid.ustadz.ui.kajian.ShowKajianActivity
+import com.kajianid.admin.databinding.FragmentKajianBinding
+import com.kajianid.admin.ui.kajian.ShowKajianActivity
+import com.kajianid.admin.ui.main.kajian.KajianViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
