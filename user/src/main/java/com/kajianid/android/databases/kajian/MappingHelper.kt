@@ -21,6 +21,7 @@ object MappingHelper {
                 val date_announce = getString(getColumnIndexOrThrow(DatabaseContract.KajianColumns.DATE_ANNOUNCE))
                 val date_due = getString(getColumnIndexOrThrow(DatabaseContract.KajianColumns.DATE_DUE))
                 val kajian = Kajian()
+
                 kajian.id = id
                 kajian.title = kajian_title
                 kajian.ustadzName = ustadz_name

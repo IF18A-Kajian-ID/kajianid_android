@@ -14,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kajianid.android.activities.ArticleIslamiActivity;
-import com.kajianid.android.activities.DataSessionHandler;
 import com.kajianid.android.activities.KajianActivity;
-import com.kajianid.android.activities.MosqueLocationActivity;
 import com.kajianid.android.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -34,7 +32,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         //FragmentHomeBinding pengganti fragment_home.xml

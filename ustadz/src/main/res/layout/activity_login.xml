@@ -41,6 +41,19 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/btn_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bt_aksi"
+            android:backgroundTint="@color/abuabu"
+            android:backgroundTintMode="src_atop"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/btnLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

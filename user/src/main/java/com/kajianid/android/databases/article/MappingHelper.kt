@@ -15,6 +15,7 @@ object MappingHelper {
                 val content = getString(getColumnIndexOrThrow(DatabaseContract.ArticleColums.CONTENT))
                 val has_img = getString(getColumnIndexOrThrow(DatabaseContract.ArticleColums.HAS_IMG))
                 val ustadz_name = getString(getColumnIndexOrThrow(DatabaseContract.ArticleColums.USTADZ_NAME))
+                
                 val article = Article()
                 article.id = id
                 article.title = title
