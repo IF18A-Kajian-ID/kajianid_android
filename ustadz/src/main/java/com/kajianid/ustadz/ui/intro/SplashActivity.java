@@ -56,7 +56,7 @@ public class SplashActivity extends AppCompatActivity {
         int loadTime = 2000;
 
         CredentialPreference credentialPreference = new CredentialPreference(this);
-        binding.progressBar.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.VISIBLE);
         String version = "Versi" + getString(R.string.app_version);
         binding.version.setText(version);
 
@@ -75,7 +75,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void fetchLoginData(String username, String password) {
-        binding.progressBar.setVisibility(View.VISIBLE);
         if (!StringHelper.isNullOrEmpty(username) || !StringHelper.isNullOrEmpty(password)) {
             String api = getString(R.string.server) + "api/ustadz/credential";
             AsyncHttpClient client = new AsyncHttpClient();
