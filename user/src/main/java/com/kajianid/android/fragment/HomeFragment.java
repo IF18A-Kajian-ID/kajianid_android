@@ -1,4 +1,4 @@
-package com.kajianid.android.fragment;
+ package com.kajianid.android.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
