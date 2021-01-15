@@ -3,16 +3,16 @@ package com.kajianid.admin.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Admin implements Parcelable {
-    public static final Creator<Admin> CREATOR = new Creator<Admin>() {
+public class Ustadz implements Parcelable {
+    public static final Creator<com.kajianid.ustadz.data.Ustadz> CREATOR = new Creator<com.kajianid.ustadz.data.Ustadz>() {
         @Override
-        public Admin createFromParcel(Parcel in) {
-            return new Admin(in);
+        public com.kajianid.ustadz.data.Ustadz createFromParcel(Parcel in) {
+            return new com.kajianid.ustadz.data.Ustadz(in);
         }
 
         @Override
-        public Admin[] newArray(int size) {
-            return new Admin[size];
+        public com.kajianid.ustadz.data.Ustadz[] newArray(int size) {
+            return new com.kajianid.ustadz.data.Ustadz[size];
         }
     };
     private String name;
@@ -21,11 +21,11 @@ public class Admin implements Parcelable {
     private String email;
     private String gender;
 
-    public Admin() {
+    public Ustadz() {
 
     }
 
-    protected Admin(Parcel in) {
+    protected Ustadz(Parcel in) {
         name = in.readString();
         phone = in.readString();
         address = in.readString();

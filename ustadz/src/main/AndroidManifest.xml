@@ -29,7 +29,7 @@
             android:name=".ui.credential.EditIdentityActivity"
             android:label="@string/change_identity"
             android:theme="@style/ChangeIdentityDialog" />
-        <activity android:name=".ui.kajian.AddUpdateKajianActivity" />
+        <activity android:name="com.kajianid.admin.ui.kajian.AddUpdateKajianActivity" />
         <activity android:name=".ui.article.AddUpdateArticleActivity" />
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.about.AboutActivity" />
