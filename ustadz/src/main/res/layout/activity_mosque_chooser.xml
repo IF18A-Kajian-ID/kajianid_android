@@ -16,17 +16,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:padding="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
         android:text="@string/mosque_note"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_no_mosque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:layout_below="@id/tvMosqueNote"
+        android:textColor="?android:textColorLink"
+        android:textStyle="bold"
+        android:text="@string/mosque_unregistered"
+        android:autoLink="all" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMosqueList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@+id/btnBack"
-        android:layout_below="@id/tvMosqueNote"
-        android:layout_marginBottom="-56dp"
+        android:layout_below="@id/tv_no_mosque"
         tools:listitem="@layout/item_mosque" />
 
     <RelativeLayout

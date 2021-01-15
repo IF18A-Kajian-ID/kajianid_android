@@ -2,6 +2,8 @@ package com.kajianid.ustadz.ui.mosque;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,6 +51,24 @@ public class MosqueChooserActivity extends AppCompatActivity {
 
         binding.btnBack.setOnClickListener(ignored -> {
             finish();
+        });
+
+        binding.tvNoMosque.setOnClickListener(it -> {
+            String text = "Permisi, saya ingin mendaftarkan suatu tempat untuk dijadikan Masjid di aplikasi Kajian.ID.\n" +
+                    "Berikut informasi data diri saya:\n\n" +
+                    "Nama: \n" +
+                    "Email: \n" +
+                    "Nama Lokasi: \n" +
+                    "Alamat Lokasi: \n" +
+                    "Keperluan: \n\n" +
+                    "Dan untuk selanjutnya, lokasi tersebut akan saya bagikan (share location) melalui WhatsApp ini.\n\n" +
+                    "Terimakasih.";
+
+            Uri whatsAppUri = Uri.parse("https://wa.me/" + getString(R.string.whatsapp_target) + "?text=" + text);
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(whatsAppUri);
+            startActivity(i);
         });
 
         Bundle bundle = getIntent().getExtras();

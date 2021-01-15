@@ -1,6 +1,9 @@
 package com.kajianid.ustadz.ui.login;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -45,8 +48,27 @@ public class LoginActivity extends AppCompatActivity {
                 binding.contentLogin.edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
         });
 
+        binding.btnRegister.setOnClickListener(it -> {
+            String text = "Permisi, saya ingin mengajukan diri mendaftar sebagai Ustadz di aplikasi Kajian.ID.\n" +
+                        "Berikut informasi data diri saya:\n\n" +
+                        "Nama: \n" +
+                        "Email: \n" +
+                        "Nomor Telepon: \n" +
+                        "Jenis Kelamin: \n" +
+                        "Alamat Tempat Tinggal: \n" +
+                        "Password Akun: \n\n" +
+                        "Terimakasih.";
+
+            Uri whatsAppUri = Uri.parse("https://wa.me/" + getString(R.string.whatsapp_target) + "?text=" + text);
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(whatsAppUri);
+            startActivity(i);
+        });
+
         binding.btnLogin.setOnClickListener(itView -> {
             binding.btnLogin.setVisibility(View.GONE);
+            binding.btnRegister.setVisibility(View.GONE);
             binding.progressBar.setVisibility(View.VISIBLE);
 
             CredentialPreference preference = new CredentialPreference(this);

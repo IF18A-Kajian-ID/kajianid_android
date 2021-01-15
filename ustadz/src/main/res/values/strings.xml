@@ -1,6 +1,7 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="server">https://dwichan.intermediaamikom.org/</string> <!-- must end with / -->
+    <string name="whatsapp_target">6285155271589</string>
 
     <string name="app_name">Kajian.ID Ustadz</string>
     <string name="app_version">1.0 (2020)</string>
@@ -171,4 +172,6 @@
     <string name="please_wait">Mohon menunggu…</string>
     <string name="failed_load_data">Maaf, kami mengalami kegagalan dalam mengambil informasi Anda!</string>
     <string name="menu_share">Bagikan</string>
+    <string name="register">Daftar</string>
+    <string name="mosque_unregistered">Masjid/Lokasi tidak terdaftar? Klik disini!</string>
 </resources>
