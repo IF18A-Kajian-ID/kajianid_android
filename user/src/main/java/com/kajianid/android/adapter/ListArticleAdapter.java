@@ -3,6 +3,7 @@ package com.kajianid.android.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -43,7 +44,7 @@ public class ListArticleAdapter extends RecyclerView.Adapter<ListArticleAdapter.
 
     @Override
     public int getItemCount() {
-        return mArticle == null ? 0 : mArticle.size();
+        return mArticle.size();
     }
 
     static class Myarticle extends RecyclerView.ViewHolder {
@@ -56,11 +57,20 @@ public class ListArticleAdapter extends RecyclerView.Adapter<ListArticleAdapter.
         }
 
         public void bind(Article article) {
-            Glide.with(binding.getRoot().getContext()).asBitmap().load(article.getImgUrl()).into(binding.IJudul);
             binding.TVJudul.setText(article.getTitle());
             binding.TVRingkasan.setText(article.getContent());
             binding.TVTanggal.setText(article.getPostDate());
             binding.TVUstadz.setText(article.getUstadzName());
+
+            if (article.getHasImg().equals("0")) {
+                binding.IJudul.setVisibility(View.GONE);
+            } else {
+                Glide.with(binding.getRoot().getContext())
+                        .asBitmap()
+                        .load(article.getImgUrl())
+                        .into(binding.IJudul);
+            }
+
             binding.getRoot().setOnClickListener(view -> {
                 Intent artikelIntent = new Intent(binding.getRoot().getContext(), ReadArticleActivity.class);
                 artikelIntent.putExtra(ReadArticleActivity.EXTRA_ARTICLE_ID, article.getId());

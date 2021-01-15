@@ -261,7 +261,7 @@ class ShowKajianActivity : AppCompatActivity() {
                     setType(mimeType)
                     setChooserTitle("Bagikan kajian ini sekarang!")
                     setText("""
-Kajian: ${binding?.contentShowKajian?.tvKajianTitle?.text}
+*Kajian ${binding?.contentShowKajian?.tvKajianTitle?.text}*
 Waktu Pelaksanaan: ${binding?.contentShowKajian?.tvTimestampDue?.text}
 
 Kajian ini bersifat ${kajian.place}

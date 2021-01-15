@@ -14,12 +14,7 @@ import com.kajianid.android.databinding.ListKajianBinding;
 import java.util.ArrayList;
 
 public class KajianSQLAdapter extends RecyclerView.Adapter<KajianSQLAdapter.KajianSQLViewHolder> {
-    private Context context = null;
     ArrayList<Kajian> mKajian = new ArrayList<>();
-
-    public KajianSQLAdapter(Context context) {
-        this.context = context;
-    }
 
     public KajianSQLAdapter() {
     }
@@ -45,7 +40,7 @@ public class KajianSQLAdapter extends RecyclerView.Adapter<KajianSQLAdapter.Kaji
 
     @Override
     public int getItemCount() {
-        return mKajian == null ? 0 : mKajian.size();
+        return mKajian.size();
     }
 
     public class KajianSQLViewHolder extends RecyclerView.ViewHolder {
@@ -74,7 +69,7 @@ public class KajianSQLAdapter extends RecyclerView.Adapter<KajianSQLAdapter.Kaji
 
             binding.getRoot().setOnClickListener(view -> {
                 Intent kajianIntent = new Intent(binding.getRoot().getContext(), ShowKajianSQLActivity.class);
-                kajianIntent.putExtra(ShowKajianSQLActivity.EXTRA_PARCEL_KAJIAN, kajian.getId());
+                kajianIntent.putExtra(ShowKajianSQLActivity.EXTRA_PARCEL_KAJIAN, kajian);
                 binding.getRoot().getContext().startActivity(kajianIntent);
             });
         }

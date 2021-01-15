@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,6 +62,7 @@ public class ShowKajianViewModel extends ViewModel {
                     JSONObject kajianJSONObject = list.getJSONObject(0);
                     String title = kajianJSONObject.getString("kajian_title");
                     String ustadzName = kajianJSONObject.getString("ustadz_name");
+                    String mosqueId = kajianJSONObject.getString("mosque_id");
                     String mosqueName = kajianJSONObject.getString("mosque_name");
                     String address = kajianJSONObject.getString("address");
                     String category = kajianJSONObject.getString("place");
@@ -70,23 +72,26 @@ public class ShowKajianViewModel extends ViewModel {
                     String dateAnnounce = kajianJSONObject.getString("date_announce");
                     String dateDue = kajianJSONObject.getString("date_due");
 
-                    String date = kajianJSONObject.getString("post_date");
-                    Date datePost = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(date);
-                    assert datePost != null;
-                    String datePostFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(datePost);
+                    DateFormat dateAnnounceD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                    String dateAnnounceFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateAnnounceD.parse(dateAnnounce));
+
+                    DateFormat dateDueD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                    String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDueD.parse(dateDue));
 
                     resultMap.put("status", true);
                     resultMap.put("id", id);
+                    resultMap.put("title", title);
                     resultMap.put("ustadz_name", ustadzName);
+                    resultMap.put("mosque_id", mosqueId);
                     resultMap.put("mosque_name", mosqueName);
                     resultMap.put("address", address);
                     resultMap.put("category", category);
                     resultMap.put("youtube_link", youtubeLink);
-                    resultMap.put("post_date", datePostFormatted);
                     resultMap.put("description", description);
                     resultMap.put("img_resource", imgResource);
-                    resultMap.put("date_announce", dateAnnounce);
-                    resultMap.put("date_due", dateDue);
+                    resultMap.put("date_announce", dateAnnounceFormatted);
+                    resultMap.put("date_due", dateDueFormatted);
+                    resultMap.put("date_due_unformatted", dateDue);
                     mData.postValue(resultMap);
                 } catch (JSONException | ParseException e) {
                     resultMap.put("status", false);
@@ -130,6 +135,7 @@ public class ShowKajianViewModel extends ViewModel {
                     JSONObject kajianJSONObject = list.getJSONObject(0);
                     String title = kajianJSONObject.getString("kajian_title");
                     String ustadzName = kajianJSONObject.getString("ustadz_name");
+                    String mosqueId = kajianJSONObject.getString("mosque_id");
                     String mosqueName = kajianJSONObject.getString("mosque_name");
                     String address = kajianJSONObject.getString("address");
                     String category = kajianJSONObject.getString("place");
@@ -139,23 +145,28 @@ public class ShowKajianViewModel extends ViewModel {
                     String dateAnnounce = kajianJSONObject.getString("date_announce");
                     String dateDue = kajianJSONObject.getString("date_due");
 
-                    String date = kajianJSONObject.getString("post_date");
-                    Date datePost = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(date);
-                    assert datePost != null;
-                    String datePostFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(datePost);
+                    DateFormat dateAnnounceD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                    assert dateAnnounceD != null;
+                    String dateAnnounceFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateAnnounceD.parse(dateAnnounce));
+
+                    DateFormat dateDueD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                    assert dateDueD != null;
+                    String dateDueFormatted = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()).format(dateDueD.parse(dateDue));
 
                     resultMap.put("status", true);
                     resultMap.put("id", id);
+                    resultMap.put("title", title);
                     resultMap.put("ustadz_name", ustadzName);
+                    resultMap.put("mosque_id", mosqueId);
                     resultMap.put("mosque_name", mosqueName);
                     resultMap.put("address", address);
                     resultMap.put("category", category);
                     resultMap.put("youtube_link", youtubeLink);
-                    resultMap.put("post_date", datePostFormatted);
                     resultMap.put("description", description);
                     resultMap.put("img_resource", imgResource);
-                    resultMap.put("date_announce", dateAnnounce);
-                    resultMap.put("date_due", dateDue);
+                    resultMap.put("date_announce", dateAnnounceFormatted);
+                    resultMap.put("date_due", dateDueFormatted);
+                    resultMap.put("date_due_unformatted", dateDue);
                     mData.postValue(resultMap);
                 } catch (JSONException | ParseException e) {
                     resultMap.put("status", false);
