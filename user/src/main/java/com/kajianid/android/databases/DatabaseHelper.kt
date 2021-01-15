@@ -9,7 +9,7 @@ import com.kajianid.android.databases.DatabaseContract.KajianColumns.Companion.T
 class DatabaseHelper (context: Context):
         SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
     companion object {
-        private const val DATABASE_NAME = "dbShoumHome"
+        private const val DATABASE_NAME = "kajianid"
         private const val DATABASE_VERSION = 1
         private val SQL_CREATE_NAME_KAJIAN = """
             CREATE TABLE $TABLE_NAME_KAJIAN(
@@ -25,9 +25,8 @@ class DatabaseHelper (context: Context):
             ${DatabaseContract.KajianColumns.DATE_ANNOUNCE} Text,
             ${DatabaseContract.KajianColumns.DATE_DUE} Text)
         """.trimIndent()
-    }
 
-    private val SQL_CREATE_TABLE_ARTIKEL = """
+        private val SQL_CREATE_TABLE_ARTIKEL = """
             CREATE TABLE $TABLE_NAME_ARTICLES(
             ${DatabaseContract.ArticleColums.ID} varchar(5) not null primary key,
             ${DatabaseContract.ArticleColums.TITLE} text,
@@ -37,6 +36,7 @@ class DatabaseHelper (context: Context):
             ${DatabaseContract.ArticleColums.USTADZ_NAME} varchar(15),
             ${DatabaseContract.ArticleColums.IMGURL} Text)
         """.trimIndent()
+    }
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(SQL_CREATE_NAME_KAJIAN)
