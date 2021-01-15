@@ -34,7 +34,8 @@
         android:contentDescription="@string/likes"
         android:src="@drawable/ic_baseline_thumb_up_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgArticle" />
+        app:layout_constraintTop_toBottomOf="@+id/imgArticle"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvLikeCount"
@@ -44,14 +45,14 @@
         android:text="@string/example_likes"
         app:layout_constraintBottom_toBottomOf="@+id/imgLike"
         app:layout_constraintStart_toEndOf="@+id/imgLike"
-        app:layout_constraintTop_toTopOf="@+id/imgLike" />
-
+        app:layout_constraintTop_toTopOf="@+id/imgLike"
+        android:visibility="gone"/>
 
     <ImageView
         android:id="@+id/imgCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="0dp"
         android:contentDescription="@string/post_date"
         android:src="@drawable/ic_baseline_calendar_today_24"
         app:layout_constraintBottom_toBottomOf="@+id/tvLikeCount"

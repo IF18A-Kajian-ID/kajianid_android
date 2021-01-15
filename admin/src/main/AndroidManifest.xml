@@ -15,15 +15,20 @@
         <activity
             android:name=".ui.mosque.MosqueChooserActivity"
             android:theme="@style/MosqueChooserDialog" />
+        <activity android:name=".ui.kajian.ShowKajianActivity" />
+        <activity android:name=".ui.article.ReadArticleActivity" />
         <activity
-            android:name=".ui.kajian.AddUpdateKajianActivity"/>
-        <activity android:name=".ui.main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".ui.credential.EditPasswordActivity"
+            android:label="@string/change_password"
+            android:theme="@style/ChangePasswordDialog" />
+        <activity
+            android:name=".ui.credential.EditIdentityActivity"
+            android:label="@string/change_identity"
+            android:theme="@style/ChangeIdentityDialog" />
+        <activity android:name=".ui.kajian.AddUpdateKajianActivity" />
+        <activity android:name=".ui.article.AddUpdateArticleActivity" />
+        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.about.AboutActivity" />
     </application>
 
 </manifest>

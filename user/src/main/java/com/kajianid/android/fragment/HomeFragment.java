@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
+    //wajib ada constructor
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -35,7 +36,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+        //FragmentHomeBinding pengganti fragment_home.xml
         binding = FragmentHomeBinding.inflate(inflater);
         return binding.getRoot();
     }
