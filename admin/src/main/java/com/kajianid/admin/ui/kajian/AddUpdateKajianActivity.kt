@@ -1,4 +1,4 @@
-package com.kajianid.ustadz.ui.kajian
+package com.kajianid.admin.ui.kajian
 
 import android.Manifest
 import android.app.DatePickerDialog
@@ -72,7 +72,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
                     binding?.tilKajianAddress?.visibility = View.VISIBLE
                     binding?.tilKajianYtLink?.visibility = View.GONE
                     if (kajian.imgResource != null) {
-                        Glide.with(this)
+                        com.bumptech.glide.Glide.with(this)
                                 .load(kajian.imgResource)
                                 .into(binding!!.imgKajian)
                     }
@@ -223,7 +223,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             }
             RESULT_OK -> if (requestCode == RESULT_LOAD_IMAGE && data != null) {
                 val selectedImage = data.data
-                Glide.with(this)
+                com.bumptech.glide.Glide.with(this)
                         .load(selectedImage)
                         .into(binding?.imgKajian!!)
                 val path = selectedImage!!.path!!.substring(5)
@@ -293,10 +293,10 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             val kajianDateTimeDue = "$kajianDateDue $kajianTimeDue"
 
             val api = getString(R.string.server) + "api/kajian"
-            val client = AsyncHttpClient()
+            val client = com.loopj.android.http.AsyncHttpClient()
             val credential = CredentialPreference(this)
 
-            val params = RequestParams()
+            val params = com.loopj.android.http.RequestParams()
             params.put("title", kajianTitle)
             params.put("ustadz_id", credential.credential.username)
             params.put("mosque_id", mosqueId)
@@ -311,8 +311,8 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             params.put("desc", kajianDescription)
             params.put("due", kajianDateTimeDue)
             client.setTimeout(60000)
-            client.post(api, params, object : AsyncHttpResponseHandler() {
-                override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
+            client.post(api, params, object : com.loopj.android.http.AsyncHttpResponseHandler() {
+                override fun onSuccess(statusCode: Int, headers: Array<cz.msebera.android.httpclient.Header>, responseBody: ByteArray) {
                     binding!!.progressMessage.visibility = View.GONE
                     binding!!.errorMessage.visibility = View.GONE
                     Toast.makeText(this@AddUpdateKajianActivity, getString(R.string.add_kajian_success), Toast.LENGTH_SHORT).show()
@@ -320,7 +320,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
                     finish()
                 }
 
-                override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
+                override fun onFailure(statusCode: Int, headers: Array<cz.msebera.android.httpclient.Header>, responseBody: ByteArray, error: Throwable) {
                     error.printStackTrace()
                     Log.e("ERROR", String(responseBody))
                     binding!!.progressMessage.visibility = View.GONE
@@ -388,9 +388,9 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             kajianTimeDue = binding!!.edtKajianTimeDue.text.toString()
             val kajianDateTimeDue = "$kajianDateDue $kajianTimeDue"
             val api = getString(R.string.server) + "api/kajian/" + kajian.id
-            val client = AsyncHttpClient()
+            val client = com.loopj.android.http.AsyncHttpClient()
             val credential = CredentialPreference(this)
-            val params = RequestParams()
+            val params = com.loopj.android.http.RequestParams()
             params.put("title", kajianTitle)
             params.put("ustadz_id", credential.credential.username)
             params.put("mosque_id", mosqueId)
@@ -405,8 +405,8 @@ class AddUpdateKajianActivity : AppCompatActivity() {
             params.put("desc", kajianDescription)
             params.put("due", kajianDateTimeDue)
             client.setTimeout(60000)
-            client.put(api, params, object : AsyncHttpResponseHandler() {
-                override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
+            client.put(api, params, object : com.loopj.android.http.AsyncHttpResponseHandler() {
+                override fun onSuccess(statusCode: Int, headers: Array<cz.msebera.android.httpclient.Header>, responseBody: ByteArray) {
                     binding!!.progressMessage.visibility = View.GONE
                     binding!!.errorMessage.visibility = View.GONE
                     Toast.makeText(this@AddUpdateKajianActivity, getString(R.string.add_kajian_success), Toast.LENGTH_SHORT).show()
@@ -414,7 +414,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
                     finish()
                 }
 
-                override fun onFailure(statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
+                override fun onFailure(statusCode: Int, headers: Array<cz.msebera.android.httpclient.Header>, responseBody: ByteArray, error: Throwable) {
                     error.printStackTrace()
                     Log.e("ERROR", String(responseBody))
                     binding!!.progressMessage.visibility = View.GONE
