@@ -9,19 +9,16 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.gms.maps.model.LatLng;
 import com.kajianid.admin.R;
 import com.kajianid.admin.data.Mosque;
 import com.kajianid.admin.databinding.ItemMosqueListBinding;
-import com.kajianid.ustadz.prefs.CredentialPreference;
+import com.kajianid.admin.prefs.CredentialPreference;
 import com.kajianid.admin.utils.StringHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
