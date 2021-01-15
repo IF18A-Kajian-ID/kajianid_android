@@ -34,7 +34,6 @@ public class ArticleViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Article>> listArticle = new MutableLiveData<>();
 
     public String setArticle(Context context, String searchQuery) {
-
         try {
             Looper.prepare();
         } catch (Exception e) {
@@ -108,8 +107,7 @@ public class ArticleViewModel extends ViewModel {
 
         RequestParams params = new RequestParams();
         params.put("read", "0");
-        params.put("ustadz_mode", "1");
-        params.put("ustadz_id", "admin"); // replace admin with Ustadz ID
+        params.put("ustadz_mode", "0");
         params.put("query", searchQuery);
 
         client.get(url, params, new AsyncHttpResponseHandler() {

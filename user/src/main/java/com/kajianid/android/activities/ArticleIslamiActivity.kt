@@ -58,7 +58,7 @@ class ArticleIslamiActivity : AppCompatActivity() {
         binding.pullToRefresh.setOnRefreshListener {
             GlobalScope.launch (Dispatchers.Main) {
                 val deferredArticles = async(Dispatchers.IO) {
-                    articleViewModel.setArticle(this@ArticleIslamiActivity, searchView?.query.toString())
+                    articleViewModel.setArticle(this@ArticleIslamiActivity, "")
                 }
                 val status = deferredArticles.await()
                 if (status != null) {
