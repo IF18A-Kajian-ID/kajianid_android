@@ -20,6 +20,7 @@ import com.kajianid.android.databases.DatabaseContract
 import com.kajianid.android.databases.kajian.DbKajianHelper
 import com.kajianid.android.databases.kajian.MappingHelper
 import com.kajianid.android.databinding.ActivityShowKajianBinding
+import com.kajianid.android.receiver.KajianAlarmReceiver
 import com.kajianid.android.viewmodels.ShowKajianViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -31,6 +32,7 @@ class ShowKajianActivity : AppCompatActivity() {
     private lateinit var showKajianViewModel: ShowKajianViewModel
     private var id : String = ""
     private var remindered = false
+    private var dateDueUnformatted: String = ""
     private lateinit var dbKajianHelper: DbKajianHelper
     private lateinit var kajian: Kajian
     private lateinit var binding: ActivityShowKajianBinding
@@ -43,6 +45,8 @@ class ShowKajianActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityShowKajianBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val alarmReceiver = KajianAlarmReceiver()
 
         binding.progressMessage.visibility = View.VISIBLE
         binding.errorMessage.visibility = View.GONE
@@ -68,6 +72,7 @@ class ShowKajianActivity : AppCompatActivity() {
                 val description = it["description"].toString()
                 val dateAnnounce = resources.getString(R.string.timestamp_announce) + " " + it["date_announce"].toString()
                 val dateDue = resources.getString(R.string.timestamp_due) + " " + it["date_due"]
+                dateDueUnformatted = it["date_due_unformatted"].toString()
 
                 binding.contentShowKajian.tvKajianTitle.text = title
                 binding.contentShowKajian.tvUstadzName.text = ustadzName
@@ -147,7 +152,7 @@ class ShowKajianActivity : AppCompatActivity() {
                     dbKajianHelper.deleteById(id)
                     remindered = false
                     binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_none_24)
-                    Toast.makeText(this, "Pengingat Telah di NonAtifkan",Toast.LENGTH_LONG).show()
+                    alarmReceiver.cancelReminder(this, kajian.id.toInt())
                 }
                 alert.setNegativeButton(resources.getString(R.string.no)) { _, _ ->
                     /* no-op */
@@ -169,7 +174,7 @@ class ShowKajianActivity : AppCompatActivity() {
                 dbKajianHelper.insert(values)
                 remindered = true
                 binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_active_24)
-                Toast.makeText(this, "Pengingat Telah di Aktifkan",Toast.LENGTH_LONG).show()
+                alarmReceiver.setReminder(this, kajian.id.toInt(), kajian.title, dateDueUnformatted, kajian.ustadzName)
             }
         }
         // Pull-to-Refresh
@@ -193,6 +198,7 @@ class ShowKajianActivity : AppCompatActivity() {
                     val description = it["description"].toString()
                     val dateAnnounce = resources.getString(R.string.timestamp_announce) + " " + it["date_announce"].toString()
                     val dateDue = resources.getString(R.string.timestamp_due) + " " + it["date_due"]
+                    dateDueUnformatted = it["date_due_unformatted"].toString()
 
                     // write to model class
                     kajian.id = it["id"].toString()

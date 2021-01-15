@@ -19,6 +19,7 @@ import com.kajianid.android.databases.DatabaseContract
 import com.kajianid.android.databases.kajian.DbKajianHelper
 import com.kajianid.android.databases.kajian.MappingHelper
 import com.kajianid.android.databinding.ActivityShowKajianBinding
+import com.kajianid.android.receiver.KajianAlarmReceiver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -39,6 +40,8 @@ class ShowKajianSQLActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityShowKajianBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val alarmReceiver = KajianAlarmReceiver()
 
         binding.progressMessage.visibility = View.GONE
         binding.errorMessage.visibility = View.GONE
@@ -104,7 +107,7 @@ class ShowKajianSQLActivity:AppCompatActivity() {
                     kajian.id?.let { it1 -> dbKajianHelper.deleteById(it1) }
                     remindered = false
                     binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_none_24)
-                    Toast.makeText(this, "Pengingat Telah di NonAtifkan",Toast.LENGTH_LONG).show()
+                    alarmReceiver.cancelReminder(this, kajian.id.toInt())
                     finish()
                 }
                 alert.setNegativeButton(resources.getString(R.string.no)) { _, _ ->
@@ -127,7 +130,7 @@ class ShowKajianSQLActivity:AppCompatActivity() {
                 dbKajianHelper.insert(values)
                 remindered = true
                 binding.fabreminder.setImageResource(R.drawable.ic_baseline_notifications_active_24)
-                Toast.makeText(this, "Pengingat Telah di Aktifkan", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Kajian disimpan.", Toast.LENGTH_LONG).show()
             }
         }
 

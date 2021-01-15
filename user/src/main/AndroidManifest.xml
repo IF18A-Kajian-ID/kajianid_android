@@ -8,6 +8,8 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KajianID">
+        <receiver
+            android:name=".receiver.KajianAlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".activities.AboutActivity" />
         <activity android:name=".activities.ArticleIslamiActivity" />
@@ -33,7 +39,6 @@
             android:required="false" />
 
         <activity android:name=".activities.SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

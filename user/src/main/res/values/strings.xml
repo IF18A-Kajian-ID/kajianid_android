@@ -119,4 +119,7 @@
     <string name="logo">LOGO</string>
     <string name="versinya">Version</string>
     <string name="share">Bagikan</string>
+
+    <string name="notification_half_title">Sebentar lagi kajian %s akan dimulai!</string>
+    <string name="notification_half_message">Bersiap-siaplah! Sebentar lagi, kajian %s yang dibawakan %s akan dimulai dalam waktu 30 menit ke depan!</string>
 </resources>
