@@ -89,7 +89,7 @@ class AddUpdateKajianActivity : AppCompatActivity() {
                 }
             }
             binding?.edtKajianTitle?.setText(kajian.title)
-            binding?.tvMosqueId?.text = kajian.id
+            binding?.tvMosqueId?.text = kajian.mosqueId
             binding?.tvMosqueName?.text = kajian.mosqueName
             binding?.edtKajianDescription?.setText(kajian.description)
             try {
