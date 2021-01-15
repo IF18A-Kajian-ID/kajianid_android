@@ -59,7 +59,7 @@ class KajianActivity : AppCompatActivity() {
         binding.pullToRefresh.setOnRefreshListener {
             GlobalScope.launch (Dispatchers.Main) {
                 val deferredKajian = async(Dispatchers.IO) {
-                    kajianViewModel.setKajian(this@KajianActivity, searchView?.query.toString())
+                    kajianViewModel.setKajian(this@KajianActivity, "")
                 }
                 val status = deferredKajian.await()
                 if (status != null) {

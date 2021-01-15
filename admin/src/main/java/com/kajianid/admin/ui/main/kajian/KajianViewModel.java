@@ -8,10 +8,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.kajianid.ustadz.R;
-import com.kajianid.ustadz.data.Kajian;
-import com.kajianid.ustadz.prefs.CredentialPreference;
-import com.kajianid.ustadz.ui.main.kajian.KajianAdapter;
+import com.kajianid.admin.R;
+import com.kajianid.admin.data.Kajian;
+import com.kajianid.admin.prefs.CredentialPreference;
+import com.kajianid.admin.ui.main.kajian.KajianAdapter;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
