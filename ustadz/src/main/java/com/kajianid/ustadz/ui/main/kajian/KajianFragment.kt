@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kajianid.ustadz.databinding.FragmentKajianBinding
-import com.kajianid.admin.ui.kajian.AddUpdateKajianActivity
+import com.kajianid.ustadz.ui.kajian.AddUpdateKajianActivity
 import com.kajianid.ustadz.ui.kajian.ShowKajianActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -96,8 +96,8 @@ class KajianFragment : Fragment() {
         kajianViewModel.setKajianAsync(requireActivity().applicationContext, adapter, "")
 
         binding.fabAddKajian.setOnClickListener {
-            val i = Intent(activity?.applicationContext, com.kajianid.admin.ui.kajian.AddUpdateKajianActivity::class.java)
-            startActivityForResult(i, com.kajianid.admin.ui.kajian.AddUpdateKajianActivity.RESULT_SAVE)
+            val i = Intent(activity?.applicationContext, AddUpdateKajianActivity::class.java)
+            startActivityForResult(i, AddUpdateKajianActivity.RESULT_SAVE)
         }
     }
 
@@ -122,7 +122,7 @@ class KajianFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (resultCode) {
-            com.kajianid.admin.ui.kajian.AddUpdateKajianActivity.RESULT_SAVE -> fetchKajian()
+            AddUpdateKajianActivity.RESULT_SAVE -> fetchKajian()
             ShowKajianActivity.RESULT_DELETE -> fetchKajian()
         }
         super.onActivityResult(requestCode, resultCode, data)
